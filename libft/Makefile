@@ -88,7 +88,11 @@ SRCS += ./ft_bonus_str_wc.c
 SRCS += ./ft_bonus_lstadd_end.c
 SRCS += ./ft_bonus_lstadd_n.c
 
-INC = ./libft.h
+SRCS += ./get_next_line.c
+
+INC += ./libft.h
+INC += ./get_next_line.h
+
 OBJ = $(SRCS:.c=.o)
 
 all: $(NAME)
@@ -96,7 +100,6 @@ all: $(NAME)
 $(NAME): $(OBJ) $(INC)
 	ar -rc $(NAME) $(OBJ)
 	ranlib $(NAME)
-	rm -rf $(OBJ)
 
 .PHONY: clean
 clean:

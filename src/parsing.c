@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jprevota <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,29 +12,30 @@
 
 #include "../inc/fdf.h"
 
-int	main(int argc, char **argv)
+int	parsing_file(char *file)
 {
-	void		*mlx;
-	t_window 	*win1;
+	int		fd;
+	int		gnl;
+	int		i;
+	char	*line;
 
-	if (argc == 2)
+	(void)i;
+	if ((fd = open(file, O_RDONLY)) == -1)
+		return (-1);
+	gnl = -1;
+	while (ft_strlen(line) > 0)
 	{
-		if (parsing_file(argv[1]) != 1)
-		{
-			ft_putendl("Incorrect File");
-			exit(-1);
-		}
-		mlx = mlx_init();
-		//largeur hauteur titre
-		win1 = mlx_new_window(mlx, 400, 400, argv[1]);
-		//fenetre abscisse ordonnee couleur(hex alpha RGB)
-		mlx_pixel_put(mlx, win1, 200, 200, 0x00FF0000);
-		mlx_loop(mlx);
+		gnl = gnl + get_next_line(fd, &line);
+		parsing_line(line, gnl);
 	}
-	else
-	{
-		ft_putendl("Usage: ./fdf PathToMyFile");
-		exit(-1);
-	}
+
+	return (1);
+}
+
+int	parsing_line(char *line, int y)
+{
+	ft_putnbr(y);
+	ft_putstr(" : ");
+	ft_putendl(line);
 	return (0);
 }

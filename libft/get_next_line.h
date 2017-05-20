@@ -1,41 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jprevota <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/08 16:29:43 by jprevota          #+#    #+#             */
-/*   Updated: 2017/05/20 21:48:16 by admin            ###   ########.fr       */
+/*   Created: 2016/11/28 16:44:38 by jprevota          #+#    #+#             */
+/*   Updated: 2017/04/20 15:56:30 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minilibx/mlx.h"
-#include "../libft/libft.h"
-#include <stdlib.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-#ifndef _FDF_
-# define _FDF_
+# define BUFF_SIZE 5
+# include "./libft.h"
 
-typedef struct	s_window
-{
-	char		*title;
-	int			width;
-	int			height;
-} 				t_window;
-
-typedef struct	s_3D_point
-{
-	int			x;
-	int			y;
-	int			z;
-}				t_3D_point;
-
-//Parsing.c
-int	parsing_file(char *file);
-int	parsing_line(char *line, int y);
+int		get_next_line(const int fd, char **line);
+int		check_nl(char *str);
+int     fill_buffer(int fd, char *buff_end);
+char    *str_memcat(char *mem1, char *mem2, size_t size);
 
 #endif

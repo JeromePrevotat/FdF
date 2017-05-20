@@ -6,6 +6,7 @@ MLXFLAGS = -framework OpenGL -framework AppKit
 NAME = fdf
 
 SRCS += ./src/main.c
+SRCS += ./src/parsing.c
 
 INC += ./inc/fdf.h
 
@@ -15,7 +16,6 @@ all: libft mlx $(NAME)
 
 $(NAME): $(OBJ) $(INC)
 	$(CC) $(CFLAGS) $(LIB) $(MLXFLAGS) $(SRCS) -o $@
-	rm -rf $(OBJ)
 
 .PHONY: clean
 clean:
