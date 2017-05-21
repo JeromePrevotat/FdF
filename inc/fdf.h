@@ -20,14 +20,6 @@
 #ifndef _FDF_
 # define _FDF_
 
-typedef struct	s_window
-{
-	void		*mlx_p;
-	char		*title;
-	int			width;
-	int			height;
-	void 		*p_window;
-} 				t_window;
 
 typedef struct	s_3D_point
 {
@@ -36,14 +28,42 @@ typedef struct	s_3D_point
 	int			z;
 }				t_3D_point;
 
+typedef struct	s_3D_p_list
+{
+	struct s_3D_p_list	*prev;
+	struct s_3D_p_list	*next;
+	t_3D_point	*point;
+}				t_3D_p_list;
+
+typedef struct	s_window
+{
+	void		*mlx_p;
+	char		*title;
+	int			width;
+	int			height;
+	t_3D_p_list **p_list;
+	void 		*p_w;
+} 				t_window;
+
+//k_event.c
+int				fun_list(int keycode, void *param);
+int				close_program(int keycode, void *param);
+
+//Draw.c
+int				get_keycode(int keycode, void *param);
+int				draw_next_point(t_window *window);
+
 //Window.c
-t_window		*init_window(void *mlx_p, char *title, int width, int height);
+t_window		*init_window(void *mlx_p, char *title, int width, int height, t_3D_p_list **point_list);
 
 //Parsing.c
-int				parsing_file(char *file);
-int				parsing_line(char *line, int y);
+int				parsing_file(char *file, t_3D_p_list **point_list);
+int				parsing_line(char *line, int y, t_3D_p_list	**point_list);
 
-//Graph.c
-t_3D_point 		*new_3D_point(int x, int y, int z);
+//Point.c
+int				new_3D_point(t_3D_p_list **p_list, int absc, int ord, int h);
+t_3D_p_list		*p_lstnew(t_3D_point *p);
+void			lst_add_3Dpoint(t_3D_p_list **point_list, t_3D_p_list *point);
+void			to_lst_start(t_3D_p_list **point_list);
 
 #endif

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   k_event.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jprevota <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,18 +12,20 @@
 
 #include "../inc/fdf.h"
 
-t_window	*init_window(void *mlx_p, char *title, int width, int height, t_3D_p_list **point_list)
+int	fun_list(int keycode, void *window)
 {
-	t_window	*win;
+	if (keycode == 53)
+		close_program(53, window);
+	if (keycode == 35)
+		draw_next_point(window);
+	return (0);
+}
 
-	if (!(win = (t_window *)malloc(1 * sizeof(t_window))))
-		return (NULL);
-	ft_memset((void *)win, '\0', sizeof(t_window));
-	win->mlx_p = mlx_p;
-	win->title = title;
-	win->width = width;
-	win->height = height;
-	win->p_list = point_list;
-	win->p_w = NULL;
-	return (win);
+int	close_program(int keycode, void *window)
+{
+	(void)window;
+	(void)keycode;
+	ft_putendl("ESC pressed, closing program");
+	exit(0);
+	return (0);
 }

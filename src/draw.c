@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   draw.c        	                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jprevota <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 16:29:43 by jprevota          #+#    #+#             */
-/*   Updated: 2017/05/20 21:48:16 by admin            ###   ########.fr       */
+/*   Updated: 2016/11/15 16:18:37 by jprevota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
-
-t_window	*init_window(void *mlx_p, char *title, int width, int height, t_3D_p_list **point_list)
+/*
+int	get_keycode(int keycode, void *window)
 {
-	t_window	*win;
+	ft_putnbr(keycode);
+	ft_putchar('\n');
+	(void)window;
+	return (0);
+}*/
 
-	if (!(win = (t_window *)malloc(1 * sizeof(t_window))))
-		return (NULL);
-	ft_memset((void *)win, '\0', sizeof(t_window));
-	win->mlx_p = mlx_p;
-	win->title = title;
-	win->width = width;
-	win->height = height;
-	win->p_list = point_list;
-	win->p_w = NULL;
-	return (win);
+int	draw_next_point(t_window *window)
+{
+	//mlx_pixel_put(window->mlx_p, window->p_w, 200, 200, 0x00FF0000);
+	t_3D_p_list **tmp;
+
+	tmp = window->p_list;
+	if ((*(tmp)) == NULL)
+		ft_putendl("All points are draw");
+	if ((*(tmp)) != NULL)
+		mlx_pixel_put(window->mlx_p, window->p_w, (*(tmp))->point->x, (*(tmp))->point->y, 0x00FF0000);
+	if ((*(tmp)) != NULL)
+		(*(tmp)) = (*(tmp))->next;
+	return (0);
 }

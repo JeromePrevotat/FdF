@@ -16,21 +16,30 @@ int	main(int argc, char **argv)
 {
 	void		*mlx;
 	t_window 	*win1;
+	t_3D_p_list	**point_list;
 
 	if (argc == 2)
 	{
-		if (parsing_file(argv[1]) != 1)
+		if (!(point_list = (t_3D_p_list **)malloc(1 * sizeof(t_3D_p_list *))))
+			return (-1);
+		*point_list = NULL;
+		if (parsing_file(argv[1], point_list) != 1)
 		{
 			ft_putendl("Incorrect File");
 			exit(-1);
 		}
 		mlx = mlx_init();
-		ft_putendl("YOLO");
-		win1 = init_window(mlx, argv[1], 400, 400);
+		win1 = init_window(mlx, argv[1], 400, 400, point_list);
+
 		//largeur hauteur titre
-		win1->p_window = mlx_new_window(mlx, 400, 400, argv[1]);
+		win1->p_w = mlx_new_window(mlx, win1->width, win1->height, win1->title);
+
 		//fenetre abscisse ordonnee couleur(hex alpha RGB)
-		mlx_pixel_put(mlx, win1->p_window, 200, 200, 0x00FF0000);
+		//mlx_pixel_put(mlx, win1->p_w, 200, 200, 0x00FF0000);
+
+		//event clavier
+		//window, pointeur fonction, param
+		mlx_key_hook(win1->p_w, fun_list, win1);
 		mlx_loop(mlx);
 	}
 	else

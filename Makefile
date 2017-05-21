@@ -8,6 +8,9 @@ NAME = fdf
 SRCS += ./src/main.c
 SRCS += ./src/parsing.c
 SRCS += ./src/window.c
+SRCS += ./src/draw.c
+SRCS += ./src/k_event.c
+SRCS += ./src/point.c
 
 INC += ./inc/fdf.h
 

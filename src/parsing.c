@@ -12,45 +12,43 @@
 
 #include "../inc/fdf.h"
 
-int	parsing_file(char *file)
+int	parsing_file(char *file, t_3D_p_list **point_list)
 {
 	int		fd;
 	int		gnl;
 	char	*line;
 
-	ft_putendl("Entering parsing_file");
-	//init line
 	if ((fd = open(file, O_RDONLY)) == -1)
 		return (-1);
 	gnl = -1;
-	while (line != NULL)
+	if (!(line = (char *)malloc(1 * sizeof(char))))
+		return (-1);
+	while (gnl != -2)
 	{
-		ft_putendl("Entering while loop");
 		gnl = gnl + get_next_line(fd, &line);
-		ft_putendl("gnl succeed");
-		parsing_line(line, gnl);
+		parsing_line(line, gnl, point_list);
 		if (ft_strlen(line) == 0)
-			line = NULL;
+			gnl = -2;
 	}
-
+	to_lst_start(point_list);
 	return (1);
 }
 
-int	parsing_line(char *line, int y)
+int	parsing_line(char *line, int y, t_3D_p_list	**point_list)
 {
 	int		i;
 	int		j;
 	char	**point_tab;
 
 	i = 0;
-	ft_putendl("Entering parsing_line");
 	point_tab = ft_strsplit(line, ' ');
-	while (point_tab[i])
+	while (point_tab[i] != '\0')
 	{
 		j = 0;
-		while (point_tab[i][j])
+		while (point_tab[i][j] != '\0')
 		{
 			//new_3D_point(i, y, atoi(&point_tab[i][j]));
+			new_3D_point(point_list, i, y, 0);
 			j++;
 		}
 		i++;
