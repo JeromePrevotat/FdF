@@ -25,10 +25,12 @@ int	main(int argc, char **argv)
 			exit(-1);
 		}
 		mlx = mlx_init();
+		ft_putendl("YOLO");
+		win1 = init_window(mlx, argv[1], 400, 400);
 		//largeur hauteur titre
-		win1 = mlx_new_window(mlx, 400, 400, argv[1]);
+		win1->p_window = mlx_new_window(mlx, 400, 400, argv[1]);
 		//fenetre abscisse ordonnee couleur(hex alpha RGB)
-		mlx_pixel_put(mlx, win1, 200, 200, 0x00FF0000);
+		mlx_pixel_put(mlx, win1->p_window, 200, 200, 0x00FF0000);
 		mlx_loop(mlx);
 	}
 	else

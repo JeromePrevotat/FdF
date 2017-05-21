@@ -7,6 +7,7 @@ NAME = fdf
 
 SRCS += ./src/main.c
 SRCS += ./src/parsing.c
+SRCS += ./src/window.c
 
 INC += ./inc/fdf.h
 

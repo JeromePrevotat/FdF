@@ -18,13 +18,19 @@ int	parsing_file(char *file)
 	int		gnl;
 	char	*line;
 
+	ft_putendl("Entering parsing_file");
+	//init line
 	if ((fd = open(file, O_RDONLY)) == -1)
 		return (-1);
 	gnl = -1;
-	while (ft_strlen(line) > 0)
+	while (line != NULL)
 	{
+		ft_putendl("Entering while loop");
 		gnl = gnl + get_next_line(fd, &line);
+		ft_putendl("gnl succeed");
 		parsing_line(line, gnl);
+		if (ft_strlen(line) == 0)
+			line = NULL;
 	}
 
 	return (1);
@@ -37,13 +43,14 @@ int	parsing_line(char *line, int y)
 	char	**point_tab;
 
 	i = 0;
+	ft_putendl("Entering parsing_line");
 	point_tab = ft_strsplit(line, ' ');
 	while (point_tab[i])
 	{
 		j = 0;
 		while (point_tab[i][j])
 		{
-			new_3D_point(i, y, atoi(&point_tab[i][j]));
+			//new_3D_point(i, y, atoi(&point_tab[i][j]));
 			j++;
 		}
 		i++;

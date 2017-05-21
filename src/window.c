@@ -10,40 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minilibx/mlx.h"
-#include "../libft/libft.h"
-#include <stdlib.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
+#include "../inc/fdf.h"
 
-#ifndef _FDF_
-# define _FDF_
-
-typedef struct	s_window
+t_window	*init_window(void *mlx_p, char *title, int width, int height)
 {
-	void		*mlx_p;
-	char		*title;
-	int			width;
-	int			height;
-	void 		*p_window;
-} 				t_window;
+	t_window	*win;
 
-typedef struct	s_3D_point
-{
-	int			x;
-	int			y;
-	int			z;
-}				t_3D_point;
-
-//Window.c
-t_window		*init_window(void *mlx_p, char *title, int width, int height);
-
-//Parsing.c
-int				parsing_file(char *file);
-int				parsing_line(char *line, int y);
-
-//Graph.c
-t_3D_point 		*new_3D_point(int x, int y, int z);
-
-#endif
+	if (!(win = (t_window *)malloc(1 * sizeof(t_window))))
+		return (NULL);
+	ft_memset((void *)win, '\0', sizeof(t_window));
+	win->mlx_p = mlx_p;
+	win->title = title;
+	win->width = width;
+	win->height = height;
+	win->p_window = NULL;
+	return (win);
+}
