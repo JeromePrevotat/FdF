@@ -16,10 +16,8 @@ int	parsing_file(char *file)
 {
 	int		fd;
 	int		gnl;
-	int		i;
 	char	*line;
 
-	(void)i;
 	if ((fd = open(file, O_RDONLY)) == -1)
 		return (-1);
 	gnl = -1;
@@ -34,6 +32,22 @@ int	parsing_file(char *file)
 
 int	parsing_line(char *line, int y)
 {
+	int		i;
+	int		j;
+	char	**point_tab;
+
+	i = 0;
+	point_tab = ft_strsplit(line, ' ');
+	while (point_tab[i])
+	{
+		j = 0;
+		while (point_tab[i][j])
+		{
+			new_3D_point(i, y, atoi(&point_tab[i][j]));
+			j++;
+		}
+		i++;
+	}
 	ft_putnbr(y);
 	ft_putstr(" : ");
 	ft_putendl(line);

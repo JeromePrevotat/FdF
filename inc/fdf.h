@@ -35,7 +35,10 @@ typedef struct	s_3D_point
 }				t_3D_point;
 
 //Parsing.c
-int	parsing_file(char *file);
-int	parsing_line(char *line, int y);
+int				parsing_file(char *file);
+int				parsing_line(char *line, int y);
+
+//Graph.c
+t_3D_point 		*new_3D_point(int x, int y, int z);
 
 #endif
