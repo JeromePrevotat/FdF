@@ -47,11 +47,14 @@ typedef struct	s_window
 
 //k_event.c
 int				fun_list(int keycode, void *param);
-int				close_program(int keycode, void *param);
+int				close_program();
+int				get_keycode(int keycode);
 
 //Draw.c
-int				get_keycode(int keycode, void *param);
 int				draw_next_point(t_window *window);
+int				draw_first_point(t_window *window);
+int				draw_last_point(t_window *window);
+
 
 //Window.c
 t_window		*init_window(void *mlx_p, char *title, int width, int height, t_3D_p_list **point_list);
@@ -64,6 +67,12 @@ int				parsing_line(char *line, int y, t_3D_p_list	**point_list);
 int				new_3D_point(t_3D_p_list **p_list, int absc, int ord, int h);
 t_3D_p_list		*p_lstnew(t_3D_point *p);
 void			lst_add_3Dpoint(t_3D_p_list **point_list, t_3D_p_list *point);
+void			adapt_coord(t_3D_p_list **point_list, t_window *win);
+
+
+//List.c
 void			to_lst_start(t_3D_p_list **point_list);
+void			to_lst_end(t_3D_p_list **point_list);
+
 
 #endif

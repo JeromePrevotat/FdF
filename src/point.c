@@ -39,10 +39,6 @@ t_3D_p_list	*p_lstnew(t_3D_point *p)
 
 void		lst_add_3Dpoint(t_3D_p_list **point_list, t_3D_p_list *point)
 {
-	if (*point_list == NULL)
-		ft_putendl("point_list NULL");
-	if (point == NULL)
-		ft_putendl("pointeur point 3D NULL");
 	if ((*point_list) == NULL && point)
 		(*point_list) = point;
 	else if ((*point_list) != NULL && point)
@@ -55,12 +51,16 @@ void		lst_add_3Dpoint(t_3D_p_list **point_list, t_3D_p_list *point)
 	}
 }
 
-void		to_lst_start(t_3D_p_list **point_list)
+void		adapt_coord(t_3D_p_list **point_list, t_window *win)
 {
-	ft_putendl("Entering to_lst_start");
-	if ((*point_list) == NULL)
-		ft_putendl("NULL");
-	while ((*point_list)->prev != NULL)
-		(*point_list) = (*point_list)->prev;
-	ft_putendl("Exiting to_lst_start");
+	t_3D_p_list	*tmp;
+
+	to_lst_start(point_list);
+	tmp = *point_list;
+	while (tmp != NULL)
+	{
+		tmp->point->x = (int)(((1 * win->width) / 100) * (tmp->point->x));
+		tmp->point->y = (int)(((1 * win->height) / 100) * (tmp->point->y));
+		tmp = tmp->next;
+	}
 }

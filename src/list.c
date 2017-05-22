@@ -1,43 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   k_event.c                                          :+:      :+:    :+:   */
+/*   list.c                  	                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jprevota <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 16:29:43 by jprevota          #+#    #+#             */
-/*   Updated: 2017/05/20 21:48:16 by admin            ###   ########.fr       */
+/*   Updated: 2016/11/15 16:18:37 by jprevota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
-int	fun_list(int keycode, void *window)
+void		to_lst_start(t_3D_p_list **point_list)
 {
-	if (keycode == 53)
-		close_program();
-	if (keycode == 35)
-		draw_next_point(window);
-	if (keycode == 3)
-		draw_first_point(window);
-	if (keycode == 37)
-		draw_last_point(window);
-	if (keycode != 53 && keycode != 35 && keycode != 3 && keycode != 37)
-		get_keycode(keycode);
-	return (0);
+	while ((*point_list)->prev != NULL)
+		(*point_list) = (*point_list)->prev;
 }
 
-int	close_program()
+void		to_lst_end(t_3D_p_list **point_list)
 {
-	ft_putendl("ESC pressed, closing program");
-	exit(0);
-	return (0);
-}
-
-
-int	get_keycode(int keycode)
-{
-	ft_putnbr(keycode);
-	ft_putchar('\n');
-	return (0);
+	while ((*point_list)->next != NULL)
+		(*point_list) = (*point_list)->next;
 }

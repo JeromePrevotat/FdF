@@ -29,7 +29,9 @@ int	main(int argc, char **argv)
 			exit(-1);
 		}
 		mlx = mlx_init();
-		win1 = init_window(mlx, argv[1], 400, 400, point_list);
+		win1 = init_window(mlx, argv[1], 1000, 1000, point_list);
+		adapt_coord(point_list, win1);
+		to_lst_start(point_list);
 
 		//largeur hauteur titre
 		win1->p_w = mlx_new_window(mlx, win1->width, win1->height, win1->title);
