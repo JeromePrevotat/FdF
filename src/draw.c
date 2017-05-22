@@ -56,3 +56,20 @@ int	draw_last_point(t_window *window)
 	}
 	return (0);
 }
+
+/*int	draw_segment(t_3D_point *point_A, t_3D_point *point_B, t_window *window)
+{
+	int i;
+
+	if (point_A != NULL && point_B != NULL)
+	{
+		if (point_A->x == point_B->x)
+			//draw vertical
+		if (point_A->y == point_B->y)
+			//draw horizontal
+	}
+	else
+		return (-1);
+	return (0);
+}
+*/
