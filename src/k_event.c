@@ -32,6 +32,7 @@ int	fun_list(int keycode, void *window)
 		draw_all_point(window);
 	if (keycode == 1)
 		draw_all_seg(tmp, window);
+		//draw_segment(tmp, window);
 	/*if (keycode == 126)
 		move_up(window);
 	if (keycode == 124)

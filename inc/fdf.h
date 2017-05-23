@@ -71,7 +71,7 @@ int				new_3D_point(t_3D_p_list **p_list, int absc, int ord, int h);
 t_3D_p_list		*p_lstnew(t_3D_point *p);
 void			lst_add_3Dpoint(t_3D_p_list **point_list, t_3D_p_list *point);
 void			adapt_coord(t_3D_p_list **point_list, t_window *win);
-void			cart_to_iso(t_3D_p_list **point_list);
+void			cart_to_iso(t_window *win);
 
 //List.c
 void			to_lst_start(t_3D_p_list **point_list);

@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 		mlx = mlx_init();
 		win1 = init_window(mlx, argv[1], 800, 600, point_list);
 		adapt_coord(point_list, win1);
-		cart_to_iso(point_list);
+		cart_to_iso(win1);
 		center_points(point_list, win1);
 		to_lst_start(point_list);
 
