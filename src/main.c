@@ -31,6 +31,8 @@ int	main(int argc, char **argv)
 		mlx = mlx_init();
 		win1 = init_window(mlx, argv[1], 1000, 1000, point_list);
 		adapt_coord(point_list, win1);
+		cart_to_iso(point_list);
+		center_points(point_list, win1);
 		to_lst_start(point_list);
 
 		//largeur hauteur titre

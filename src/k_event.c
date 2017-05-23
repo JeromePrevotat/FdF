@@ -22,7 +22,9 @@ int	fun_list(int keycode, void *window)
 		draw_first_point(window);
 	if (keycode == 37)
 		draw_last_point(window);
-	if (keycode != 53 && keycode != 35 && keycode != 3 && keycode != 37)
+	if (keycode == 0)
+		draw_all_point(window);
+	if (keycode != 53 && keycode != 35 && keycode != 3 && keycode != 37 && keycode != 0)
 		get_keycode(keycode);
 	return (0);
 }

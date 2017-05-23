@@ -59,8 +59,22 @@ void		adapt_coord(t_3D_p_list **point_list, t_window *win)
 	tmp = *point_list;
 	while (tmp != NULL)
 	{
-		tmp->point->x = (int)(((1 * win->width) / 100) * (tmp->point->x));
-		tmp->point->y = (int)(((1 * win->height) / 100) * (tmp->point->y));
+		tmp->point->x = (int)(((2 * win->width) / 100) * (tmp->point->x));
+		tmp->point->y = (int)(((2 * win->height) / 100) * (tmp->point->y));
+		tmp = tmp->next;
+	}
+}
+
+void		cart_to_iso(t_3D_p_list **point_list)
+{
+	t_3D_p_list	*tmp;
+
+	to_lst_start(point_list);
+	tmp = *point_list;
+	while (tmp != NULL)
+	{
+		tmp->point->x = (tmp->point->x - tmp->point->y);
+		tmp->point->y = (tmp->point->x + tmp->point->y) / 2;
 		tmp = tmp->next;
 	}
 }

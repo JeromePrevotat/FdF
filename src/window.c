@@ -27,3 +27,17 @@ t_window	*init_window(void *mlx_p, char *title, int width, int height, t_3D_p_li
 	win->p_w = NULL;
 	return (win);
 }
+
+void		center_points(t_3D_p_list **point_list, t_window *win)
+{
+	t_3D_p_list	*tmp;
+
+	to_lst_start(point_list);
+	tmp = *point_list;
+	while (tmp != NULL)
+	{
+		tmp->point->x = (tmp->point->x) + (int)(win->width / 4);
+		tmp->point->y = (tmp->point->y) + (int)(win->width / 4);
+		tmp = tmp->next;
+	}
+}

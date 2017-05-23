@@ -47,8 +47,10 @@ int	parsing_line(char *line, int y, t_3D_p_list	**point_list)
 		j = 0;
 		while (point_tab[i][j] != '\0')
 		{
-			//new_3D_point(i, y, atoi(&point_tab[i][j]));
-			new_3D_point(point_list, i, y, 0);
+			new_3D_point(point_list, i, y, atoi(&point_tab[i][j]));
+			ft_putnbr(atoi(&point_tab[i][j]));
+			ft_putchar('\n')
+			//new_3D_point(point_list, i, y, 0);
 			j++;
 		}
 		i++;
