@@ -76,5 +76,10 @@ void			cart_to_iso(t_3D_p_list **point_list);
 void			to_lst_start(t_3D_p_list **point_list);
 void			to_lst_end(t_3D_p_list **point_list);
 
+//Move.c
+void		move_up(t_window *win);
+void		move_down(t_window *win);
+void		move_rigth(t_window *win);
+void		move_left(t_window *win);
 
 #endif

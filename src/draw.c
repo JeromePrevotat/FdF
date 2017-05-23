@@ -76,8 +76,6 @@ int	draw_all_point(t_window *window)
 	to_lst_start(tmp);
 	while ((*(tmp)) != NULL)
 	{
-		ft_putnbr((*(tmp))->point->z);
-		ft_putchar('-');
 		if ((*(tmp))->point->z == 0)
 			mlx_pixel_put(window->mlx_p, window->p_w, (*(tmp))->point->x, (*(tmp))->point->y, 0x00FFFFFF);
 		if ((*(tmp))->point->z > 0 && (*(tmp))->point->z <= 10)

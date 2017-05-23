@@ -12,6 +12,7 @@ SRCS += ./src/draw.c
 SRCS += ./src/k_event.c
 SRCS += ./src/point.c
 SRCS += ./src/list.c
+SRCS += ./src/move.c
 
 INC += ./inc/fdf.h
 

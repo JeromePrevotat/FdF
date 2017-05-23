@@ -37,22 +37,13 @@ int	parsing_file(char *file, t_3D_p_list **point_list)
 int	parsing_line(char *line, int y, t_3D_p_list	**point_list)
 {
 	int		i;
-	int		j;
 	char	**point_tab;
 
 	i = 0;
 	point_tab = ft_strsplit(line, ' ');
 	while (point_tab[i] != '\0')
 	{
-		j = 0;
-		while (point_tab[i][j] != '\0')
-		{
-			new_3D_point(point_list, i, y, atoi(&point_tab[i][j]));
-			ft_putnbr(atoi(&point_tab[i][j]));
-			ft_putchar('\n')
-			//new_3D_point(point_list, i, y, 0);
-			j++;
-		}
+		new_3D_point(point_list, i, y, atoi(point_tab[i]));
 		i++;
 	}
 	ft_putnbr(y);
