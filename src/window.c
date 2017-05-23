@@ -36,8 +36,8 @@ void		center_points(t_3D_p_list **point_list, t_window *win)
 	tmp = *point_list;
 	while (tmp != NULL)
 	{
-		tmp->point->x = (tmp->point->x) + (int)(win->width / 4);
-		tmp->point->y = (tmp->point->y) + (int)(win->width / 4);
+		tmp->point->x = (tmp->point->x) + (int)(win->width / 3);
+		tmp->point->y = (tmp->point->y) + (int)(win->width / 3);
 		tmp = tmp->next;
 	}
 }

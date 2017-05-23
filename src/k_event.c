@@ -14,6 +14,12 @@
 
 int	fun_list(int keycode, void *window)
 {
+	t_window *win;
+	t_3D_p_list **tmp;
+
+	win = window;
+	tmp = win->p_list;
+
 	if (keycode == 53)
 		close_program();
 	if (keycode == 35)
@@ -24,6 +30,8 @@ int	fun_list(int keycode, void *window)
 		draw_last_point(window);
 	if (keycode == 0)
 		draw_all_point(window);
+	if (keycode == 1)
+		draw_all_seg(tmp, window);
 	/*if (keycode == 126)
 		move_up(window);
 	if (keycode == 124)
@@ -33,7 +41,8 @@ int	fun_list(int keycode, void *window)
 	if (keycode == 123)
 		move_left(window);*/
 	if (keycode != 53 && keycode != 35 && keycode != 3 && keycode != 37 && keycode != 0
-		&& keycode != 123 && keycode != 124 && keycode != 125 && keycode != 126)
+		&& keycode != 123 && keycode != 124 && keycode != 125 && keycode != 126
+		&& keycode != 1)
 		get_keycode(keycode);
 	return (0);
 }

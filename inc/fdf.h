@@ -54,8 +54,9 @@ int				get_keycode(int keycode);
 int				draw_next_point(t_window *window);
 int				draw_first_point(t_window *window);
 int				draw_last_point(t_window *window);
-int				draw_segment(t_3D_point *point_A, t_3D_point *point_B, t_window *window);
 int				draw_all_point(t_window *window);
+int				draw_segment(t_3D_p_list **point_A, t_window *window);
+int				draw_all_seg(t_3D_p_list **point_A, t_window *window);
 
 //Window.c
 t_window		*init_window(void *mlx_p, char *title, int width, int height, t_3D_p_list **point_list);
