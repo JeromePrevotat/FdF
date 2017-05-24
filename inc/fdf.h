@@ -35,13 +35,20 @@ typedef struct	s_3D_p_list
 	t_3D_point	*point;
 }				t_3D_p_list;
 
+typedef struct	s_3D_p_tab
+{
+	int			x_max;
+	int			y_max;
+	t_3D_point	**tab;
+}				t_3D_p_tab;
+
 typedef struct	s_window
 {
 	void		*mlx_p;
 	char		*title;
 	int			width;
 	int			height;
-	t_3D_p_list **p_list;
+	t_3D_p_tab	*p_tab;
 	void 		*p_w;
 } 				t_window;
 
@@ -51,16 +58,13 @@ int				close_program();
 int				get_keycode(int keycode);
 
 //Draw.c
-int				draw_next_point(t_window *window);
-int				draw_first_point(t_window *window);
-int				draw_last_point(t_window *window);
-int				draw_all_point(t_window *window);
-int				draw_segment(t_3D_p_list **point_A, t_window *window);
+int				draw_all_points(t_window *window);
+int				draw_segment(t_window *window);
 int				draw_all_seg(t_3D_p_list **point_A, t_window *window);
 
 //Window.c
-t_window		*init_window(void *mlx_p, char *title, int width, int height, t_3D_p_list **point_list);
-void			center_points(t_3D_p_list **point_list, t_window *win);
+t_window		*init_window(void *mlx_p, char *title, int width, t_3D_p_tab *p_tab);
+void			center_points(t_3D_p_tab *p_tab, t_window *win);
 
 //Parsing.c
 int				parsing_file(char *file, t_3D_p_list **point_list);
@@ -70,12 +74,17 @@ int				parsing_line(char *line, int y, t_3D_p_list	**point_list);
 int				new_3D_point(t_3D_p_list **p_list, int absc, int ord, int h);
 t_3D_p_list		*p_lstnew(t_3D_point *p);
 void			lst_add_3Dpoint(t_3D_p_list **point_list, t_3D_p_list *point);
-void			adapt_coord(t_3D_p_list **point_list, t_window *win);
-void			cart_to_iso(t_window *win);
+void			adapt_coord(t_3D_p_tab *p_tab, t_window *win);
+void			cart_to_iso(t_3D_p_tab *p_tab);
 
 //List.c
 void			to_lst_start(t_3D_p_list **point_list);
 void			to_lst_end(t_3D_p_list **point_list);
+
+//Tab.c
+int				get_tab_x(t_3D_p_list **p_list);
+int				get_tab_y(t_3D_p_list **p_list);
+int				fill_tab(t_3D_p_list **p_list, t_3D_p_tab *p_tab);
 
 //Move.c
 void		move_up(t_window *win);

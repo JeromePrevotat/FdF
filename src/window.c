@@ -12,7 +12,7 @@
 
 #include "../inc/fdf.h"
 
-t_window	*init_window(void *mlx_p, char *title, int width, int height, t_3D_p_list **point_list)
+t_window	*init_window(void *mlx_p, char *title, int width, t_3D_p_tab *p_tab)
 {
 	t_window	*win;
 
@@ -22,22 +22,27 @@ t_window	*init_window(void *mlx_p, char *title, int width, int height, t_3D_p_li
 	win->mlx_p = mlx_p;
 	win->title = title;
 	win->width = width;
-	win->height = height;
-	win->p_list = point_list;
+	win->height = width - width / 4;
+	win->p_tab = p_tab;
 	win->p_w = NULL;
 	return (win);
 }
 
-void		center_points(t_3D_p_list **point_list, t_window *win)
+void		center_points(t_3D_p_tab *p_tab, t_window *win)
 {
-	t_3D_p_list	*tmp;
+	int	x;
+	int	y;
 
-	to_lst_start(point_list);
-	tmp = *point_list;
-	while (tmp != NULL)
+	y = 0;
+	while (y < p_tab->y_max)
 	{
-		tmp->point->x = (tmp->point->x) + (int)(win->width / 3);
-		tmp->point->y = (tmp->point->y) + (int)(win->width / 3);
-		tmp = tmp->next;
+		x = 0;
+		while (x < p_tab->x_max)
+		{
+			p_tab->tab[y][x].x = p_tab->tab[y][x].x + (int)(win->width / 3);
+			p_tab->tab[y][x].y = p_tab->tab[y][x].y + (int)(win->height / 3);
+			x++;
+		}
+		y++;
 	}
 }

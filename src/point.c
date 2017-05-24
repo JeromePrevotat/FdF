@@ -51,35 +51,44 @@ void		lst_add_3Dpoint(t_3D_p_list **point_list, t_3D_p_list *point)
 	}
 }
 
-void		adapt_coord(t_3D_p_list **point_list, t_window *win)
+void		adapt_coord(t_3D_p_tab *p_tab, t_window *win)
 {
-	t_3D_p_list	*tmp;
+	int	x;
+	int	y;
 
-	to_lst_start(point_list);
-	tmp = *point_list;
-	while (tmp != NULL)
+	y = 0;
+	while (y < p_tab->y_max)
 	{
-		tmp->point->x = (int)(((2 * win->width) / 100) * (tmp->point->x));
-		tmp->point->y = (int)(((2 * win->height) / 100) * (tmp->point->y));
-		tmp = tmp->next;
+		x = 0;
+		while (x < p_tab->x_max)
+		{
+			p_tab->tab[y][x].x = (int)(((2 * win->width) / 100) * (p_tab->tab[y][x].x));
+			p_tab->tab[y][x].y = (int)(((2 * win->height) / 100) * (p_tab->tab[y][x].y));
+			ft_putnbr(p_tab->tab[y][x].x);
+			ft_putchar(',');
+			ft_putnbr(p_tab->tab[y][x].y);
+			ft_putchar('\n');
+			x++;
+		}
+		y++;
 	}
 }
 
-void		cart_to_iso(t_window *win)
+void		cart_to_iso(t_3D_p_tab *p_tab)
 {
-	t_3D_p_list	**tmp;
+	int	x;
+	int	y;
 
-	to_lst_start(win->p_list);
-	tmp = win->p_list;
-	while ((*(tmp))->next != NULL)
+	y = 0;
+	while (y < p_tab->y_max)
 	{
-		//My iso view
-		(*(tmp))->point->x = ((*(tmp))->point->x - (*(tmp))->point->y) - ((*(tmp))->point->z);
-		(*(tmp))->point->y = (((*(tmp))->point->x + (*(tmp))->point->y) / 2) - ((*(tmp))->point->z);
-		/*(*(tmp))->point->x = (win->width / 4) + ((*(tmp))->point->x - (*(tmp))->point->y);
-		(*(tmp))->point->y = (win->height / 4) - ((*(tmp))->point->x / 2) - ((*(tmp))->point->y / 2) - (*(tmp))->point->z;*/
-		(*(tmp)) = (*(tmp))->next;
+		x = 0;
+		while (x < p_tab->x_max)
+		{
+			p_tab->tab[y][x].x = (p_tab->tab[y][x].x - p_tab->tab[y][x].y) - p_tab->tab[y][x].z;
+			p_tab->tab[y][x].y = ((p_tab->tab[y][x].x + p_tab->tab[y][x].y) / 2) - p_tab->tab[y][x].z;
+			x++;
+		}
+		y++;
 	}
-	(*(tmp))->point->x = ((*(tmp))->point->x - (*(tmp))->point->y) - ((*(tmp))->point->z);
-	(*(tmp))->point->y = (((*(tmp))->point->x + (*(tmp))->point->y) / 2) - ((*(tmp))->point->z);
 }

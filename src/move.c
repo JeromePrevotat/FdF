@@ -13,7 +13,7 @@
 #include "../inc/fdf.h"
 
 
-void		move_up(t_window *win)
+/*void		move_up(t_window *win)
 {
 	t_3D_p_list	**tmp;
 
@@ -63,4 +63,4 @@ void		move_left(t_window *win)
 		(*tmp)->point->x = ((*tmp)->point->x) - (int)(win->width / 4);
 		(*tmp) = (*tmp)->next;
 	}
-}
+}*/
