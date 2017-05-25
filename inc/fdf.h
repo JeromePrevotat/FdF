@@ -92,6 +92,7 @@ t_3D_p_list		*p_lstnew(t_3D_point *p);
 void			lst_add_3Dpoint(t_3D_p_list **point_list, t_3D_p_list *point);
 void			adapt_coord(t_3D_p_tab *p_tab, t_window *win);
 void			cart_to_iso(t_3D_p_tab *p_tab);
+void			cart_to_para(t_3D_p_tab *p_tab);
 
 //List.c
 void			to_lst_start(t_3D_p_list **point_list);

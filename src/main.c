@@ -49,7 +49,8 @@ int	main(int argc, char **argv)
 		mlx = mlx_init();
 		win1 = init_window(mlx, argv[1], 800, p_tab);
 		adapt_coord(p_tab, win1);
-		cart_to_iso(p_tab);
+		//cart_to_iso(p_tab);
+		cart_to_para(p_tab);
 		center_points(p_tab, win1);
 
 		//largeur hauteur titre*/
@@ -61,6 +62,7 @@ int	main(int argc, char **argv)
 		//event clavier
 		//window, pointeur fonction, param
 		mlx_key_hook(win1->p_w, fun_list, win1);
+		draw_all_segment(win1, 0x00FFFFFF);
 		mlx_loop(mlx);
 	}
 	else

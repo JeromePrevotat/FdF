@@ -88,3 +88,25 @@ void		cart_to_iso(t_3D_p_tab *p_tab)
 		y++;
 	}
 }
+
+void		cart_to_para(t_3D_p_tab *p_tab)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < p_tab->y_max)
+	{
+		x = 0;
+		while (x < p_tab->x_max)
+		{
+			if (p_tab->tab[y][x].z != 0)
+			{
+				p_tab->tab[y][x].x = (int)(p_tab->tab[y][x].x * p_tab->tab[y][x].z)/9;
+				p_tab->tab[y][x].y = (int)(p_tab->tab[y][x].y * p_tab->tab[y][x].z)/9;
+			}
+			x++;
+		}
+		y++;
+	}
+}
