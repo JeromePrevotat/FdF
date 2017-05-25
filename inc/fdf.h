@@ -72,11 +72,11 @@ int				get_keycode(int keycode);
 int				draw_all_points(t_window *window);
 
 //Segment.c
-void			draw_all_segment(t_window *win);
-void			draw_segment(t_window *win, t_3D_point point_a, t_3D_point point_b);
-void			draw_h_segment(t_window *win, t_seg_arg *seg_arg);
-void			draw_v_segment(t_window *win, t_seg_arg *seg_arg);
-int				del_segment(t_window *window);
+int				draw_all_segment(t_window *win, int color);
+int				draw_segment(t_window *win, t_3D_point point_a, t_3D_point point_b, int color);
+int				draw_h_segment(t_window *win, t_seg_arg *seg_arg, int color);
+int				draw_v_segment(t_window *win, t_seg_arg *seg_arg, int color);
+int				del_segment(t_window *window, int color);
 
 //Window.c
 t_window		*init_window(void *mlx_p, char *title, int width, t_3D_p_tab *p_tab);

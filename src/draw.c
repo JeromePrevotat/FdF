@@ -14,7 +14,6 @@
 
 int	draw_all_points(t_window *window)
 {
-	//mlx_pixel_put(window->mlx_p, window->p_w, 200, 200, 0x00FF0000);
 	int	x;
 	int	y;
 
@@ -38,71 +37,3 @@ int	draw_all_points(t_window *window)
 	}
 	return (1);
 }
-
-/*int	draw_segment(t_window *window)
-{
-	int	dx;
-	int	dy;
-	int	e;
-	int	to_draw_x;
-	int	to_draw_y;
-	int x;
-	int y;
-
-	//Vertical Segments
-	y = 0;
-	while (y < window->p_tab->y_max)
-	{
-		x = 0;
-		while (x < window->p_tab->x_max)
-		{
-			to_draw_x = window->p_tab->tab[y][x].x;
-			to_draw_y = window->p_tab->tab[y][x].y;
-			e = window->p_tab->tab[y][x + 1].x - window->p_tab->tab[y][x].x;
-			dx = e * 2;
-			dy = (window->p_tab->tab[y][x + 1].y - window->p_tab->tab[y][x].y) * 2;
-			while (to_draw_x <= window->p_tab->tab[y][x + 1].x)
-			{
-				mlx_pixel_put(window->mlx_p, window->p_w, to_draw_x, to_draw_y, 0x0000FF00);
-				to_draw_x++;
-				e = e - dy;
-				if (e <= 0)
-				{
-					to_draw_y++;
-					e = e + dx;
-				}
-			}
-			x++;
-		}
-		y++;
-	}
-
-	//Horizontal Segments
-	y = 0;
-	while (y < window->p_tab->y_max)
-	{
-		x = 0;
-		while (x < window->p_tab->x_max)
-		{
-			to_draw_x = window->p_tab->tab[y][x].x;
-			to_draw_y = window->p_tab->tab[y][x].y;
-			e = window->p_tab->tab[y][x + 1].x - window->p_tab->tab[y][x].x;
-			dx = e * 2;
-			dy = (window->p_tab->tab[y][x + 1].y - window->p_tab->tab[y][x].y) * 2;
-			while (to_draw_x <= window->p_tab->tab[y][x + 1].x)
-			{
-				mlx_pixel_put(window->mlx_p, window->p_w, to_draw_x, to_draw_y, 0x00FFFFFF);
-				to_draw_x++;
-				e = e + dy;
-				if (e >= 0)
-				{
-					to_draw_y--;
-					e = e + dx;
-				}
-			}
-			x++;
-		}
-		y++;
-	}
-	return (1);
-}*/

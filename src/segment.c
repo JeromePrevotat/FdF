@@ -12,36 +12,49 @@
 
 #include "../inc/fdf.h"
 
-void draw_all_segment(t_window *win)
+int draw_all_segment(t_window *win, int color)
 {
 	int x;
 	int y;
 
 	y = 0;
-	x = 0;
-	while (x < win->p_tab->x_max - 1)
+	while (y < win->p_tab->y_max)
 	{
-		draw_segment(win, win->p_tab->tab[y][x], win->p_tab->tab[y][x + 1]);
-		x++;
-	}
-	while (y < win->p_tab->y_max - 1)
-	{
-		draw_segment(win, win->p_tab->tab[y][x], win->p_tab->tab[y + 1][x]);
+		x = 0;
+		while (x < win->p_tab->x_max - 1)
+		{
+			draw_segment(win, win->p_tab->tab[y][x], win->p_tab->tab[y][x + 1], color);
+			x++;
+		}
 		y++;
 	}
+	y = 0;
+	while (y < win->p_tab->y_max - 1)
+	{
+		x = 0;
+		while (x < win->p_tab->x_max)
+		{
+			draw_segment(win, win->p_tab->tab[y][x], win->p_tab->tab[y + 1][x], color);
+			x++;
+		}
+		y++;
+	}
+	return (1);
 }
 
-void draw_segment(t_window *win, t_3D_point point_a, t_3D_point point_b)
+int draw_segment(t_window *win, t_3D_point point_a, t_3D_point point_b, int color)
 {
 	t_seg_arg	*seg_arg;
 
-	if (!(seg_arg = (t_seg_arg *)malloc(1 * sizeof(seg_arg))))
-		return ;
+	if (!(seg_arg = (t_seg_arg *)malloc(6 * sizeof(int))))
+		return (-1);
 	seg_arg->to_draw_x = point_a.x;
 	seg_arg->to_draw_y = point_a.y;
 	seg_arg->dx = point_b.x - point_a.x;
 	seg_arg->dy = point_b.y - point_a.y;
+	mlx_pixel_put(win->mlx_p, win->p_w, point_a.x, point_a.y, color);
 	if (seg_arg->dx > 0)
+	//SEGFAULT HERE MOTHER FUCKER
 		seg_arg->xinc = 1;
 	else
 		seg_arg->xinc = -1;
@@ -53,92 +66,65 @@ void draw_segment(t_window *win, t_3D_point point_a, t_3D_point point_b)
 	seg_arg->dy = abs(seg_arg->dy);
 	//Segment Horizontal
 	if (seg_arg->dx > seg_arg->dy)
-		draw_h_segment(win, seg_arg);
-	//Segment vertical
+		draw_h_segment(win, seg_arg, color);
+	//Segment Vertical
 	else
-		draw_v_segment(win, seg_arg);
+		draw_v_segment(win, seg_arg, color);
 	if (seg_arg != NULL)
 		free(seg_arg);
+	return (1);
 }
 
-void draw_h_segment(t_window *win, t_seg_arg *seg_arg)
+int draw_h_segment(t_window *win, t_seg_arg *seg_arg, int color)
 {
 	int i;
-	int cumul;
+	int e;
 
-	cumul = seg_arg->dx / 2;
+	if (seg_arg == NULL)
+		return (-1);
+	e = seg_arg->dx / 2;
 	i = 1;
 	while (i <= seg_arg->dx)
 	{
 		seg_arg->to_draw_x = seg_arg->to_draw_x + seg_arg->xinc;
-		cumul = cumul + seg_arg->dy;
-		if (cumul >= seg_arg->dx)
+		e = e + seg_arg->dy;
+		if (e >= seg_arg->dx)
 		{
-			cumul = cumul - seg_arg->dx;
+			e = e - seg_arg->dx;
 			seg_arg->to_draw_y = seg_arg->to_draw_y + seg_arg->yinc;
 		}
-		mlx_pixel_put(win->mlx_p, win->p_w, seg_arg->to_draw_x, seg_arg->to_draw_y, 0x0000FF00);
+		mlx_pixel_put(win->mlx_p, win->p_w, seg_arg->to_draw_x, seg_arg->to_draw_y, color);
 		i++;
 	}
+	return (1);
 }
 
-void draw_v_segment(t_window *win, t_seg_arg *seg_arg)
+int draw_v_segment(t_window *win, t_seg_arg *seg_arg, int color)
 {
 	int i;
-	int cumul;
+	int e;
 
-	cumul = seg_arg->dy / 2;
+	if (seg_arg == NULL)
+		return (-1);
+	e = seg_arg->dy / 2;
 	i = 1;
 	while (i <= seg_arg->dy)
 	{
 		seg_arg->to_draw_y = seg_arg->to_draw_y + seg_arg->yinc ;
-		cumul = cumul + seg_arg->dx ;
-		if (cumul >= seg_arg->dy)
+		e = e + seg_arg->dx ;
+		if (e >= seg_arg->dy)
 		{
-			cumul = cumul - seg_arg->dy;
+			e = e - seg_arg->dy;
 			seg_arg->to_draw_x = seg_arg->to_draw_x + seg_arg->xinc;
 		}
-		mlx_pixel_put(win->mlx_p, win->p_w, seg_arg->to_draw_x, seg_arg->to_draw_y, 0x0000FF00);
+		mlx_pixel_put(win->mlx_p, win->p_w, seg_arg->to_draw_x, seg_arg->to_draw_y, color);
 		i++;
 	}
+	return (1);
 }
 
-int	del_segment(t_window *win)
+int	del_segment(t_window *win, int color)
 {
-	int	dx;
-	int	dy;
-	int	e;
-	int	to_draw_x;
-	int	to_draw_y;
-	int x;
-	int y;
-
-	//Vertical Segments
-	y = 0;
-	while (y < win->p_tab->y_max)
-	{
-		x = 0;
-		while (x < win->p_tab->x_max)
-		{
-			to_draw_x = win->p_tab->tab[y][x].x;
-			to_draw_y = win->p_tab->tab[y][x].y;
-			e = win->p_tab->tab[y][x + 1].x - win->p_tab->tab[y][x].x;
-			dx = e * 2;
-			dy = (win->p_tab->tab[y][x + 1].y - win->p_tab->tab[y][x].y) * 2;
-			while (to_draw_x <= win->p_tab->tab[y][x + 1].x)
-			{
-				mlx_pixel_put(win->mlx_p, win->p_w, to_draw_x, to_draw_y, 0x00000000);
-				to_draw_x++;
-				e = e - dy;
-				if (e <= 0)
-				{
-					to_draw_y++;
-					e = e + dx;
-				}
-			}
-			x++;
-		}
-		y++;
-	}
+	draw_all_segment(win, color);
 	return (1);
 }
