@@ -20,7 +20,10 @@ int	fun_list(int keycode, void *window)
 		draw_all_points(window);
 	if (keycode == 1)
 		//draw_all_seg(window->p_tab, window);
-		draw_segment(window);
+		draw_all_segment(window);
+	if (keycode == 7)
+		//draw_all_seg(window->p_tab, window);
+		del_segment(window);
 	/*if (keycode == 126)
 		move_up(window);
 	if (keycode == 124)
@@ -30,7 +33,7 @@ int	fun_list(int keycode, void *window)
 	if (keycode == 123)
 		move_left(window);*/
 	if (keycode != 53 && keycode != 0 && keycode != 1 && keycode != 123
-		&& keycode != 124 && keycode != 125 && keycode != 126)
+		&& keycode != 124 && keycode != 125 && keycode != 126 && keycode != 7)
 		get_keycode(keycode);
 	return (0);
 }

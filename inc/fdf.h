@@ -16,6 +16,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <math.h>
 
 #ifndef _FDF_
 # define _FDF_
@@ -52,6 +53,16 @@ typedef struct	s_window
 	void 		*p_w;
 } 				t_window;
 
+typedef struct	s_seg_arg
+{
+	int dx;
+	int dy;
+	int to_draw_x;
+	int to_draw_y;
+	int xinc;
+	int yinc;
+}				t_seg_arg;
+
 //k_event.c
 int				fun_list(int keycode, void *param);
 int				close_program();
@@ -59,8 +70,13 @@ int				get_keycode(int keycode);
 
 //Draw.c
 int				draw_all_points(t_window *window);
-int				draw_segment(t_window *window);
-int				draw_all_seg(t_3D_p_list **point_A, t_window *window);
+
+//Segment.c
+void			draw_all_segment(t_window *win);
+void			draw_segment(t_window *win, t_3D_point point_a, t_3D_point point_b);
+void			draw_h_segment(t_window *win, t_seg_arg *seg_arg);
+void			draw_v_segment(t_window *win, t_seg_arg *seg_arg);
+int				del_segment(t_window *window);
 
 //Window.c
 t_window		*init_window(void *mlx_p, char *title, int width, t_3D_p_tab *p_tab);

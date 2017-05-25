@@ -62,12 +62,8 @@ void		adapt_coord(t_3D_p_tab *p_tab, t_window *win)
 		x = 0;
 		while (x < p_tab->x_max)
 		{
-			p_tab->tab[y][x].x = (int)(((2 * win->width) / 100) * (p_tab->tab[y][x].x));
-			p_tab->tab[y][x].y = (int)(((2 * win->height) / 100) * (p_tab->tab[y][x].y));
-			ft_putnbr(p_tab->tab[y][x].x);
-			ft_putchar(',');
-			ft_putnbr(p_tab->tab[y][x].y);
-			ft_putchar('\n');
+			p_tab->tab[y][x].x = (int)(((4 * win->width) / 100) * (p_tab->tab[y][x].x));
+			p_tab->tab[y][x].y = (int)(((4 * win->height) / 100) * (p_tab->tab[y][x].y));
 			x++;
 		}
 		y++;

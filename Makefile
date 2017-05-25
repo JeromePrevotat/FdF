@@ -11,6 +11,7 @@ SRCS += ./src/window.c
 SRCS += ./src/draw.c
 SRCS += ./src/k_event.c
 SRCS += ./src/point.c
+SRCS += ./src/segment.c
 SRCS += ./src/list.c
 SRCS += ./src/move.c
 SRCS += ./src/tab.c

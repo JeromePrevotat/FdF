@@ -39,7 +39,7 @@ int	draw_all_points(t_window *window)
 	return (1);
 }
 
-int	draw_segment(t_window *window)
+/*int	draw_segment(t_window *window)
 {
 	int	dx;
 	int	dy;
@@ -54,7 +54,7 @@ int	draw_segment(t_window *window)
 	while (y < window->p_tab->y_max)
 	{
 		x = 0;
-		while (x < window->p_tab->x_max - 1)
+		while (x < window->p_tab->x_max)
 		{
 			to_draw_x = window->p_tab->tab[y][x].x;
 			to_draw_y = window->p_tab->tab[y][x].y;
@@ -63,7 +63,7 @@ int	draw_segment(t_window *window)
 			dy = (window->p_tab->tab[y][x + 1].y - window->p_tab->tab[y][x].y) * 2;
 			while (to_draw_x <= window->p_tab->tab[y][x + 1].x)
 			{
-				mlx_pixel_put(window->mlx_p, window->p_w, to_draw_x, to_draw_y, 0x00FFFFFF);
+				mlx_pixel_put(window->mlx_p, window->p_w, to_draw_x, to_draw_y, 0x0000FF00);
 				to_draw_x++;
 				e = e - dy;
 				if (e <= 0)
@@ -105,11 +105,4 @@ int	draw_segment(t_window *window)
 		y++;
 	}
 	return (1);
-}
-
-/*int	draw_all_seg(t_3D_p_list **point_A, t_window *window)
-{
-	while (draw_segment(point_A, window))
-		*point_A = (*(point_A))->next;
-	return (0);
 }*/
