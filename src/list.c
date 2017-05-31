@@ -23,3 +23,29 @@ void		to_lst_end(t_3D_p_list **point_list)
 	while ((*point_list)->next != NULL)
 		(*point_list) = (*point_list)->next;
 }
+
+t_3D_p_list	*p_lstnew(t_3D_point *p)
+{
+	t_3D_p_list	*point_3D;
+
+	if (!(point_3D = (t_3D_p_list *)malloc(1 * sizeof(t_3D_p_list))))
+		return (NULL);
+	point_3D->point = p;
+	point_3D->next = NULL;
+	point_3D->prev = NULL;
+	return (point_3D);
+}
+
+void		lst_add_3Dpoint(t_3D_p_list **point_list, t_3D_p_list *point)
+{
+	if ((*point_list) == NULL && point)
+		(*point_list) = point;
+	else if ((*point_list) != NULL && point)
+	{
+		while ((*point_list)->next != NULL)
+			(*point_list) = (*point_list)->next;
+		(*point_list)->next = point;
+		point->prev = (*point_list);
+		point->next = NULL;
+	}
+}

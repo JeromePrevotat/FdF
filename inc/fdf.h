@@ -27,6 +27,7 @@ typedef struct	s_3D_point
 	int			x;
 	int			y;
 	int			z;
+	int			color;
 }				t_3D_point;
 
 typedef struct	s_3D_p_list
@@ -63,7 +64,7 @@ typedef struct	s_seg_arg
 	int yinc;
 }				t_seg_arg;
 
-//k_event.c
+//K_event.c
 int				fun_list(int keycode, void *param);
 int				close_program();
 int				get_keycode(int keycode);
@@ -88,25 +89,36 @@ int				parsing_line(char *line, int y, t_3D_p_list	**point_list);
 
 //Point.c
 int				new_3D_point(t_3D_p_list **p_list, int absc, int ord, int h);
-t_3D_p_list		*p_lstnew(t_3D_point *p);
-void			lst_add_3Dpoint(t_3D_p_list **point_list, t_3D_p_list *point);
 void			adapt_coord(t_3D_p_tab *p_tab, t_window *win);
-void			cart_to_iso(t_3D_p_tab *p_tab);
 void			cart_to_para(t_3D_p_tab *p_tab);
 
 //List.c
 void			to_lst_start(t_3D_p_list **point_list);
 void			to_lst_end(t_3D_p_list **point_list);
+void			lst_add_3Dpoint(t_3D_p_list **point_list, t_3D_p_list *point);
+t_3D_p_list		*p_lstnew(t_3D_point *p);
 
 //Tab.c
 int				get_tab_x(t_3D_p_list **p_list);
 int				get_tab_y(t_3D_p_list **p_list);
 int				fill_tab(t_3D_p_list **p_list, t_3D_p_tab *p_tab);
 
-//Move.c
-void		move_up(t_window *win);
-void		move_down(t_window *win);
-void		move_rigth(t_window *win);
-void		move_left(t_window *win);
+//Isometric.c
+void			cart_to_iso(t_3D_p_tab *p_tab);
+
+//Matrice.c
+double			**init_matrice(double angle, char a);
+void			select_matrix(double **matrice, double angle, char a);
+void			fill_matrice_s(double **matrice, double coef);
+void			apply_matrice(double **matrice, t_3D_p_tab *p_tab);
+
+//Projection.c
+void			fill_matrice_ortho(double **matrice, double coef);
+void			fill_matrice_iso(double **matrice, double coef);
+
+//Rotation.c
+void			fill_matrice_x(double **matrice, double coef);
+void			fill_matrice_y(double **matrice, double coef);
+void			fill_matrice_z(double **matrice, double coef);
 
 #endif

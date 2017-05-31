@@ -54,7 +54,6 @@ int draw_segment(t_window *win, t_3D_point point_a, t_3D_point point_b, int colo
 	seg_arg->dy = point_b.y - point_a.y;
 	mlx_pixel_put(win->mlx_p, win->p_w, point_a.x, point_a.y, color);
 	if (seg_arg->dx > 0)
-	//SEGFAULT HERE MOTHER FUCKER
 		seg_arg->xinc = 1;
 	else
 		seg_arg->xinc = -1;

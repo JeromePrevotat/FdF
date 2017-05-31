@@ -13,8 +13,11 @@ SRCS += ./src/k_event.c
 SRCS += ./src/point.c
 SRCS += ./src/segment.c
 SRCS += ./src/list.c
-SRCS += ./src/move.c
 SRCS += ./src/tab.c
+SRCS += ./src/matrice.c
+SRCS += ./src/isometric.c
+SRCS += ./src/rotation.c
+SRCS += ./src/projection.c
 
 INC += ./inc/fdf.h
 
