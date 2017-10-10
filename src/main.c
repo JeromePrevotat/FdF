@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jprevota <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jprevota <jprevota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 16:29:43 by jprevota          #+#    #+#             */
 /*   Updated: 2016/11/15 16:18:37 by jprevota         ###   ########.fr       */
@@ -18,11 +18,6 @@ int	main(int argc, char **argv)
 	t_window 	*win1;
 	t_3D_p_list	**point_list;
 	t_3D_p_tab	*p_tab;
-	double **rot_x;
-	double **rot_y;
-	double **scale;
-	double **ortho;
-	double **iso;
 
 	if (argc == 2)
 	{
@@ -36,7 +31,6 @@ int	main(int argc, char **argv)
 			ft_putendl("Incorrect File");
 			exit(-1);
 		}
-		//point list filled
 		if (!(p_tab->tab = (t_3D_point **)malloc(get_tab_y(point_list) * sizeof(t_3D_point *))))
 			return (-1);
 		argc = 0;
@@ -52,35 +46,10 @@ int	main(int argc, char **argv)
 		free(point_list);
 		mlx = mlx_init();
 		win1 = init_window(mlx, argv[1], 800, p_tab);
-		//adapt_coord(p_tab, win1);
-		//rot_x = init_matrice(M_PI / 4, 'x');
-		rot_y = init_matrice(-(M_PI / 4), 'y');
-		rot_x = init_matrice(asin(tan(M_PI / 6)), 'x');
-		scale = init_matrice(20, 's');
-		ortho = init_matrice(0, 'o');
-		iso = init_matrice(0, 'i');
-		/*ft_putendl("ROTATION Y");
-		apply_matrice(rot_y, p_tab);
-		ft_putendl("ROTATION X");
-		apply_matrice(rot_x, p_tab);*/
-		ft_putendl("SCALE");
-		apply_matrice(scale, p_tab);
-		//ft_putendl("PROJECTION ISO");
-		//apply_matrice(iso, p_tab);
-		//ft_putendl("PROJECTION ORTHO");
-		//apply_matrice(ortho, p_tab);
+		adapt_coord(p_tab, win1);
 		cart_to_iso(p_tab);
 		center_points(p_tab, win1);
-		//cart_to_para(p_tab);
-
-		//largeur hauteur titre*/
 		win1->p_w = mlx_new_window(mlx, win1->width, win1->height, win1->title);
-
-		//fenetre abscisse ordonnee couleur(hex alpha RGB)
-		//mlx_pixel_put(mlx, win1->p_w, 200, 200, 0x00FF0000);
-
-		//event clavier
-		//window, pointeur fonction, param
 		mlx_key_hook(win1->p_w, fun_list, win1);
 		draw_all_segment(win1, 0x00FFFFFF);
 		mlx_loop(mlx);

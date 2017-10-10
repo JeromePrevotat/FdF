@@ -22,27 +22,27 @@
 # define _FDF_
 
 
-typedef struct	s_3D_point
+typedef struct	s_3d_point
 {
 	int			x;
 	int			y;
 	int			z;
 	int			color;
-}				t_3D_point;
+}				t_3d_point;
 
-typedef struct	s_3D_p_list
+typedef struct	s_3d_p_list
 {
-	struct s_3D_p_list	*prev;
-	struct s_3D_p_list	*next;
-	t_3D_point	*point;
-}				t_3D_p_list;
+	struct s_3d_p_list	*prev;
+	struct s_3d_p_list	*next;
+	t_3d_point	*point;
+}				t_3d_p_list;
 
-typedef struct	s_3D_p_tab
+typedef struct	s_3d_p_tab
 {
 	int			x_max;
 	int			y_max;
-	t_3D_point	**tab;
-}				t_3D_p_tab;
+	t_3d_point	**tab;
+}				t_3d_p_tab;
 
 typedef struct	s_window
 {
@@ -50,7 +50,7 @@ typedef struct	s_window
 	char		*title;
 	int			width;
 	int			height;
-	t_3D_p_tab	*p_tab;
+	t_3d_p_tab	*p_tab;
 	void 		*p_w;
 } 				t_window;
 
@@ -73,44 +73,43 @@ int				get_keycode(int keycode);
 int				draw_all_points(t_window *window);
 
 //Segment.c
-int				draw_all_segment(t_window *win, int color);
-int				draw_segment(t_window *win, t_3D_point point_a, t_3D_point point_b, int color);
+void			draw_all_segment(t_window *win, int color);
+void			draw_segment(t_window *win, t_3d_point point_a, t_3d_point point_b, int color);
 int				draw_h_segment(t_window *win, t_seg_arg *seg_arg, int color);
 int				draw_v_segment(t_window *win, t_seg_arg *seg_arg, int color);
-int				del_segment(t_window *window, int color);
 
 //Window.c
-t_window		*init_window(void *mlx_p, char *title, int width, t_3D_p_tab *p_tab);
-void			center_points(t_3D_p_tab *p_tab, t_window *win);
+t_window		*init_window(void *mlx_p, char *title, int width, t_3d_p_tab *p_tab);
+void			center_points(t_3d_p_tab *p_tab, t_window *win);
 
 //Parsing.c
-int				parsing_file(char *file, t_3D_p_list **point_list);
-int				parsing_line(char *line, int y, t_3D_p_list	**point_list);
+int				parsing_file(char *file, t_3d_p_list **point_list);
+int				parsing_line(char *line, int y, t_3d_p_list	**point_list);
 
 //Point.c
-int				new_3D_point(t_3D_p_list **p_list, int absc, int ord, int h);
-void			adapt_coord(t_3D_p_tab *p_tab, t_window *win);
-void			cart_to_para(t_3D_p_tab *p_tab);
+int				new_3d_point(t_3d_p_list **p_list, int absc, int ord, int h);
+void			adapt_coord(t_3d_p_tab *p_tab, t_window *win);
+void			cart_to_para(t_3d_p_tab *p_tab);
 
 //List.c
-void			to_lst_start(t_3D_p_list **point_list);
-void			to_lst_end(t_3D_p_list **point_list);
-void			lst_add_3Dpoint(t_3D_p_list **point_list, t_3D_p_list *point);
-t_3D_p_list		*p_lstnew(t_3D_point *p);
+void			to_lst_start(t_3d_p_list **point_list);
+void			to_lst_end(t_3d_p_list **point_list);
+void			lst_add_3dpoint(t_3d_p_list **point_list, t_3d_p_list *point);
+t_3d_p_list		*p_lstnew(t_3d_point *p);
 
 //Tab.c
-int				get_tab_x(t_3D_p_list **p_list);
-int				get_tab_y(t_3D_p_list **p_list);
-int				fill_tab(t_3D_p_list **p_list, t_3D_p_tab *p_tab);
+int				get_tab_x(t_3d_p_list **p_list);
+int				get_tab_y(t_3d_p_list **p_list);
+int				fill_tab(t_3d_p_list **p_list, t_3d_p_tab *p_tab);
 
 //Isometric.c
-void			cart_to_iso(t_3D_p_tab *p_tab);
+void			cart_to_iso(t_3d_p_tab *p_tab);
 
 //Matrice.c
 double			**init_matrice(double angle, char a);
 void			select_matrix(double **matrice, double angle, char a);
 void			fill_matrice_s(double **matrice, double coef);
-void			apply_matrice(double **matrice, t_3D_p_tab *p_tab);
+void			apply_matrice(double **matrice, t_3d_p_tab *p_tab);
 
 //Projection.c
 void			fill_matrice_ortho(double **matrice, double coef);
@@ -120,5 +119,8 @@ void			fill_matrice_iso(double **matrice, double coef);
 void			fill_matrice_x(double **matrice, double coef);
 void			fill_matrice_y(double **matrice, double coef);
 void			fill_matrice_z(double **matrice, double coef);
+
+//Utils.c
+void			del_segment(t_window *window, int color);
 
 #endif

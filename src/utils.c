@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jprevota <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jprevota <jprevota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/28 16:44:38 by jprevota          #+#    #+#             */
-/*   Updated: 2017/10/10 14:23:33 by jprevota         ###   ########.fr       */
+/*   Created: 2016/11/08 16:29:43 by jprevota          #+#    #+#             */
+/*   Updated: 2017/05/20 21:48:16 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "../inc/fdf.h"
 
-# define BUFF_SIZE 10
-# include "./libft.h"
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-
-int		get_next_line(const int fd, char **line);
-
-#endif
+void	del_segment(t_window *win, int color)
+{
+	draw_all_segment(win, color);
+}

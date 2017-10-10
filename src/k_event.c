@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   k_event.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jprevota <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jprevota <jprevota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 16:29:43 by jprevota          #+#    #+#             */
 /*   Updated: 2017/05/20 21:48:16 by admin            ###   ########.fr       */
@@ -11,6 +11,14 @@
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
+
+/*
+** MLX KEYCODE :
+** ESC : 53
+** X : 7
+** S : 1
+** P : 0
+*/
 
 int	fun_list(int keycode, void *window)
 {
@@ -36,13 +44,12 @@ int	fun_list(int keycode, void *window)
 	return (0);
 }
 
-int	close_program()
+int	close_program(void)
 {
 	ft_putendl("ESC pressed, closing program");
 	exit(0);
 	return (0);
 }
-
 
 int	get_keycode(int keycode)
 {

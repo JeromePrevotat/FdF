@@ -18,17 +18,14 @@ void	fill_matrice_x(double **matrice, double coef)
 	matrice[0][1] = 0;
 	matrice[0][2] = 0;
 	matrice[0][3] = 0;
-
 	matrice[1][0] = 0;
 	matrice[1][1] = cos(coef);
 	matrice[1][2] = sin(coef);
 	matrice[1][3] = 0;
-
 	matrice[2][0] = 0;
 	matrice[2][1] = -sin(coef);
 	matrice[2][2] = cos(coef);
 	matrice[2][3] = 0;
-
 	matrice[3][0] = 0;
 	matrice[3][1] = 0;
 	matrice[3][2] = 0;
@@ -41,17 +38,14 @@ void	fill_matrice_y(double **matrice, double coef)
 	matrice[0][1] = 0;
 	matrice[0][2] = -sin(coef);
 	matrice[0][3] = 0;
-
 	matrice[1][0] = 0;
 	matrice[1][1] = 1;
 	matrice[1][2] = 0;
 	matrice[1][3] = 0;
-
 	matrice[2][0] = sin(coef);
 	matrice[2][1] = 0;
 	matrice[2][2] = cos(coef);
 	matrice[2][3] = 0;
-
 	matrice[3][0] = 0;
 	matrice[3][1] = 0;
 	matrice[3][2] = 0;
@@ -64,17 +58,14 @@ void	fill_matrice_z(double **matrice, double coef)
 	matrice[0][1] = sin(coef);
 	matrice[0][2] = 0;
 	matrice[0][3] = 0;
-
 	matrice[1][0] = sin(coef);
 	matrice[1][1] = cos(coef);
 	matrice[1][2] = 0;
 	matrice[1][3] = 0;
-
 	matrice[2][0] = 0;
 	matrice[2][1] = 0;
 	matrice[2][2] = 1;
 	matrice[2][3] = 0;
-
 	matrice[3][0] = 0;
 	matrice[3][1] = 0;
 	matrice[3][2] = 0;

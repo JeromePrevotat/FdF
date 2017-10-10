@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   tab.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jprevota <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jprevota <jprevota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 16:29:43 by jprevota          #+#    #+#             */
 /*   Updated: 2016/11/15 16:18:37 by jprevota         ###   ########.fr       */
@@ -42,15 +42,14 @@ int	get_tab_y(t_3D_p_list **p_list)
 	return (y_max + 1);
 }
 
-int fill_tab(t_3D_p_list **p_list, t_3D_p_tab *p_tab)
+int	fill_tab(t_3D_p_list **p_list, t_3D_p_tab *p_tab)
 {
-	t_3D_p_list **tmp;
+	t_3D_p_list	**tmp;
+	int			x;
+	int			y;
 
 	to_lst_start(p_list);
 	tmp = p_list;
-	int	x;
-	int	y;
-
 	y = 0;
 	while (y < p_tab->y_max)
 	{

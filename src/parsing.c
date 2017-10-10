@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jprevota <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jprevota <jprevota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 16:29:43 by jprevota          #+#    #+#             */
 /*   Updated: 2016/11/15 16:18:37 by jprevota         ###   ########.fr       */
@@ -12,7 +12,7 @@
 
 #include "../inc/fdf.h"
 
-int	parsing_file(char *file, t_3D_p_list **point_list)
+int	parsing_file(char *file, t_3d_p_list **point_list)
 {
 	int		fd;
 	int		gnl;
@@ -34,7 +34,7 @@ int	parsing_file(char *file, t_3D_p_list **point_list)
 	return (1);
 }
 
-int	parsing_line(char *line, int y, t_3D_p_list	**point_list)
+int	parsing_line(char *line, int y, t_3d_p_list **point_list)
 {
 	int		i;
 	char	**point_tab;
@@ -43,7 +43,7 @@ int	parsing_line(char *line, int y, t_3D_p_list	**point_list)
 	point_tab = ft_strsplit(line, ' ');
 	while (point_tab[i] != '\0')
 	{
-		new_3D_point(point_list, i, y, atoi(point_tab[i]));
+		new_3d_point(point_list, i, y, atoi(point_tab[i]));
 		i++;
 	}
 	ft_putnbr(y);
