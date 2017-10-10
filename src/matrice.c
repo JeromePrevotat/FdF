@@ -68,7 +68,7 @@ void	fill_matrice_s(double **matrice, double coef)
 	matrice[3][3] = 1;
 }
 
-void	apply_matrice(double **matrice, t_3D_p_tab *p_tab)
+void	apply_matrice(double **matrice, t_3d_p_tab *p_tab)
 {
 	double	w;
 	int		x;

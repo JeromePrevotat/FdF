@@ -12,7 +12,7 @@
 
 #include "../inc/fdf.h"
 
-int	get_tab_x(t_3D_p_list **p_list)
+int	get_tab_x(t_3d_p_list **p_list)
 {
 	int	x_max;
 
@@ -27,7 +27,7 @@ int	get_tab_x(t_3D_p_list **p_list)
 	return (x_max + 1);
 }
 
-int	get_tab_y(t_3D_p_list **p_list)
+int	get_tab_y(t_3d_p_list **p_list)
 {
 	int	y_max;
 
@@ -42,9 +42,9 @@ int	get_tab_y(t_3D_p_list **p_list)
 	return (y_max + 1);
 }
 
-int	fill_tab(t_3D_p_list **p_list, t_3D_p_tab *p_tab)
+int	fill_tab(t_3d_p_list **p_list, t_3d_p_tab *p_tab)
 {
-	t_3D_p_list	**tmp;
+	t_3d_p_list	**tmp;
 	int			x;
 	int			y;
 

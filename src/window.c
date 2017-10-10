@@ -1,9 +1,9 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jprevota <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jprevota <jprevota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 16:29:43 by jprevota          #+#    #+#             */
 /*   Updated: 2017/05/20 21:48:16 by admin            ###   ########.fr       */
@@ -12,7 +12,7 @@
 
 #include "../inc/fdf.h"
 
-t_window	*init_window(void *mlx_p, char *title, int width, t_3D_p_tab *p_tab)
+t_window	*init_window(void *mlx_p, char *title, int width, t_3d_p_tab *p_tab)
 {
 	t_window	*win;
 
@@ -28,7 +28,7 @@ t_window	*init_window(void *mlx_p, char *title, int width, t_3D_p_tab *p_tab)
 	return (win);
 }
 
-void		center_points(t_3D_p_tab *p_tab, t_window *win)
+void		center_points(t_3d_p_tab *p_tab, t_window *win)
 {
 	int	x;
 	int	y;

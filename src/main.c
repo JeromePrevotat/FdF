@@ -16,27 +16,27 @@ int	main(int argc, char **argv)
 {
 	void		*mlx;
 	t_window 	*win1;
-	t_3D_p_list	**point_list;
-	t_3D_p_tab	*p_tab;
+	t_3d_p_list	**point_list;
+	t_3d_p_tab	*p_tab;
 
 	if (argc == 2)
 	{
-		if (!(point_list = (t_3D_p_list **)malloc(1 * sizeof(t_3D_p_list *))))
+		if (!(point_list = (t_3d_p_list **)malloc(1 * sizeof(t_3d_p_list *))))
 			return (-1);
 		*point_list = NULL;
-		if (!(p_tab = (t_3D_p_tab *)malloc(1 * sizeof(t_3D_p_tab))))
+		if (!(p_tab = (t_3d_p_tab *)malloc(1 * sizeof(t_3d_p_tab))))
 			return (-1);
 		if (parsing_file(argv[1], point_list) != 1)
 		{
 			ft_putendl("Incorrect File");
 			exit(-1);
 		}
-		if (!(p_tab->tab = (t_3D_point **)malloc(get_tab_y(point_list) * sizeof(t_3D_point *))))
+		if (!(p_tab->tab = (t_3d_point **)malloc(get_tab_y(point_list) * sizeof(t_3d_point *))))
 			return (-1);
 		argc = 0;
 		while (argc != get_tab_y(point_list))
 		{
-			if (!(p_tab->tab[argc] = (t_3D_point *)malloc(get_tab_x(point_list) * sizeof(t_3D_point))))
+			if (!(p_tab->tab[argc] = (t_3d_point *)malloc(get_tab_x(point_list) * sizeof(t_3d_point))))
 				return (-1);
 			argc++;
 		}

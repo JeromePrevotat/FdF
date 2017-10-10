@@ -18,6 +18,7 @@ SRCS += ./src/matrice.c
 SRCS += ./src/isometric.c
 SRCS += ./src/rotation.c
 SRCS += ./src/projection.c
+SRCS += ./src/utils.c
 
 INC += ./inc/fdf.h
 

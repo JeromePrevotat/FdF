@@ -62,7 +62,7 @@ void	draw_segment(t_window *win, t_3d_point point_a, t_3d_point point_b,
 	t_seg_arg	*seg_arg;
 
 	if (!(seg_arg = (t_seg_arg *)malloc(1 * sizeof(t_seg_arg))))
-		return (-1);
+		return ;
 	seg_arg->to_draw_x = point_a.x;
 	seg_arg->to_draw_y = point_a.y;
 	seg_arg->dx = point_b.x - point_a.x;
