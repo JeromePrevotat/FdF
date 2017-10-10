@@ -32,18 +32,18 @@ static int	ft_word_count(char const *s, char c)
 	return (word);
 }
 
-static char	*ft_word_start(char const *s, char c)
+static char	*ft_word_start(char *s, char c, int wl)
 {
 	char	*str;
-	char	*word_start;
 	size_t	i;
 
 	i = 0;
-	str = ft_strdup(s);
-	while (str[i] == c && i < ft_strlen(str))
+	while (s[i + wl] == c && i < ft_strlen(s))
 		i++;
-	word_start = str + i;
-	return (word_start);
+	str = ft_strdup(s + i + wl);
+	if (s != NULL)
+		free(s);
+	return (str);
 }
 
 static int	ft_word_len(char c, char *word)
@@ -69,25 +69,29 @@ static char	*ft_split(char *word, int len)
 char		**ft_strsplit(char const *s, char c)
 {
 	char	**tab;
+	char	*str;
 	int		wc;
 	int		wl;
 	int		i;
 
 	i = 0;
+	wl = 0;
 	if (!s)
 		return (NULL);
-	wc = ft_word_count(s, c);
+	str = ft_strdup(s);
+	wc = ft_word_count(str, c);
 	if (!(tab = (char **)malloc((wc + 1) * sizeof(char *))))
 		return (NULL);
 	while (i < wc)
 	{
-		s = ft_word_start(s, c);
-		wl = ft_word_len(c, (char *)s);
-		if (!(tab[i] = ft_split((char *)s, wl)))
+		str = ft_word_start(str, c, wl);
+		wl = ft_word_len(c, str);
+		if (!(tab[i] = ft_split(str, wl)))
 			return (NULL);
-		s = s + wl;
 		i++;
 	}
 	tab[i] = NULL;
+	if (str != NULL)
+		free(str);
 	return (tab);
 }
