@@ -16,3 +16,15 @@ void	del_segment(t_window *win, int color)
 {
 	draw_all_segment(win, color);
 }
+
+void	error(void)
+{
+	ft_putendl("Incorrect File");
+	exit(-1);
+}
+
+void	usage(void)
+{
+	ft_putendl("Usage: ./fdf PathToMyFile");
+	exit(-1);
+}

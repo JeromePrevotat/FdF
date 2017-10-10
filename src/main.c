@@ -22,22 +22,19 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		if (!(point_list = (t_3d_p_list **)malloc(1 * sizeof(t_3d_p_list *))))
-			return (-1);
+			return (ERROR);
 		*point_list = NULL;
 		if (!(p_tab = (t_3d_p_tab *)malloc(1 * sizeof(t_3d_p_tab))))
-			return (-1);
+			return (ERROR);
 		if (parsing_file(argv[1], point_list) != 1)
-		{
-			ft_putendl("Incorrect File");
-			exit(-1);
-		}
+			error();
 		if (!(p_tab->tab = (t_3d_point **)malloc(get_tab_y(point_list) * sizeof(t_3d_point *))))
-			return (-1);
+			return (ERROR);
 		argc = 0;
 		while (argc != get_tab_y(point_list))
 		{
 			if (!(p_tab->tab[argc] = (t_3d_point *)malloc(get_tab_x(point_list) * sizeof(t_3d_point))))
-				return (-1);
+				return (ERROR);
 			argc++;
 		}
 		p_tab->x_max = get_tab_x(point_list);
@@ -55,9 +52,6 @@ int	main(int argc, char **argv)
 		mlx_loop(mlx);
 	}
 	else
-	{
-		ft_putendl("Usage: ./fdf PathToMyFile");
-		exit(-1);
-	}
+		usage();
 	return (0);
 }

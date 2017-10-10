@@ -20,6 +20,9 @@
 
 #ifndef _FDF_
 # define _FDF_
+# define TRUE 1
+# define FALSE 0
+# define ERROR -1
 
 
 typedef struct	s_3d_point

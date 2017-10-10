@@ -32,6 +32,7 @@ $(NAME): $(OBJ) $(INC)
 .PHONY: clean
 clean:
 	rm -rf $(OBJ)
+	cd ./libft && $(MAKE) clean
 
 fclean: clean
 	rm -rf $(NAME)
