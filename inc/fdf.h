@@ -18,6 +18,8 @@
 #include <fcntl.h>
 #include <math.h>
 
+#include <stdio.h>
+
 #ifndef _FDF_
 # define _FDF_
 # define TRUE 1
@@ -84,6 +86,15 @@ int				draw_v_segment(t_window *win, t_seg_arg *seg_arg, int color);
 //Window.c
 t_window		*init_window(void *mlx_p, char *title, int width, t_3d_p_tab *p_tab);
 void			center_points(t_3d_p_tab *p_tab, t_window *win);
+int				get_x_min(t_3d_p_tab *p_tab);
+int				get_x_max(t_3d_p_tab *p_tab);
+int				get_y_min(t_3d_p_tab *p_tab);
+int				get_y_max(t_3d_p_tab *p_tab);
+void			center_x(t_3d_p_tab *p_tab, int x_min);
+void			center_y(t_3d_p_tab *p_tab, int y_min);
+void			rescale(t_3d_p_tab *p_tab, t_window *win, int xtrem[4]);
+void			rescale_w(t_3d_p_tab *p_tab, double w_coef);
+void			rescale_h(t_3d_p_tab *p_tab, double h_coef);
 
 //Parsing.c
 int				parsing_file(char *file, t_3d_p_list **point_list);
@@ -125,5 +136,7 @@ void			fill_matrice_z(double **matrice, double coef);
 
 //Utils.c
 void			del_segment(t_window *window, int color);
+void			error(void);
+void			usage(void);
 
 #endif

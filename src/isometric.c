@@ -27,12 +27,12 @@ void	cart_to_iso(t_3d_p_tab *p_tab)
 				- p_tab->tab[y][x].z);
 			p_tab->tab[y][x].y = (((p_tab->tab[y][x].x
 				+ p_tab->tab[y][x].y) / 2) - p_tab->tab[y][x].z);
-			ft_putnbr(p_tab->tab[y][x].x);
+			/*ft_putnbr(p_tab->tab[y][x].x);
 			ft_putchar(',');
 			ft_putnbr(p_tab->tab[y][x].y);
 			ft_putchar(',');
 			ft_putnbr(p_tab->tab[y][x].z);
-			ft_putchar('\n');
+			ft_putchar('\n');*/
 			x++;
 		}
 		y++;

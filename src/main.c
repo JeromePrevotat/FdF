@@ -42,7 +42,7 @@ int	main(int argc, char **argv)
 		fill_tab(point_list, p_tab);
 		free(point_list);
 		mlx = mlx_init();
-		win1 = init_window(mlx, argv[1], 800, p_tab);
+		win1 = init_window(mlx, argv[1], 2048, p_tab);
 		adapt_coord(p_tab, win1);
 		cart_to_iso(p_tab);
 		center_points(p_tab, win1);
