@@ -25,27 +25,9 @@ t_window	*init_window(void *mlx_p, char *title, int width, t_3d_p_tab *p_tab)
 	win->height = width - width / 4;
 	win->p_tab = p_tab;
 	win->p_w = NULL;
+	win->zoom = 100;
 	return (win);
 }
-
-/*void		center_points(t_3d_p_tab *p_tab, t_window *win)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < p_tab->y_max)
-	{
-		x = 0;
-		while (x < p_tab->x_max)
-		{
-			p_tab->tab[y][x].x = p_tab->tab[y][x].x + (int)(win->width / 2);
-			p_tab->tab[y][x].y = p_tab->tab[y][x].y + (int)(win->height / 2);
-			x++;
-		}
-		y++;
-	}
-}*/
 
 void		center_points(t_3d_p_tab *p_tab, t_window *win)
 {

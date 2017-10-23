@@ -55,6 +55,7 @@ typedef struct	s_window
 	char		*title;
 	int			width;
 	int			height;
+	int			zoom;
 	t_3d_p_tab	*p_tab;
 	void 		*p_w;
 } 				t_window;
@@ -133,6 +134,16 @@ void			fill_matrice_iso(double **matrice, double coef);
 void			fill_matrice_x(double **matrice, double coef);
 void			fill_matrice_y(double **matrice, double coef);
 void			fill_matrice_z(double **matrice, double coef);
+
+//Move.c
+void			move_up(t_window *win);
+void			move_down(t_window *win);
+void			move_rigth(t_window *win);
+void			move_left(t_window *win);
+
+//Zoom.c
+void			zoom_in(t_window *win);
+void			zoom_out(t_window *win);
 
 //Utils.c
 void			del_segment(t_window *window, int color);
