@@ -56,7 +56,9 @@ typedef struct	s_window
 	int			width;
 	int			height;
 	int			zoom;
+	int			zoom_rate;
 	t_3d_p_tab	*p_tab;
+	t_3d_p_tab	*base_tab;
 	void 		*p_w;
 } 				t_window;
 
@@ -72,7 +74,7 @@ typedef struct	s_seg_arg
 
 //K_event.c
 int				fun_list(int keycode, void *param);
-int				close_program();
+int				close_program(t_window *win);
 int				get_keycode(int keycode);
 
 //Draw.c
@@ -142,6 +144,7 @@ void			move_rigth(t_window *win);
 void			move_left(t_window *win);
 
 //Zoom.c
+t_3d_p_tab		*ptab_cpy(t_3d_p_list **list, t_window *win);
 void			zoom_in(t_window *win);
 void			zoom_out(t_window *win);
 
@@ -149,5 +152,7 @@ void			zoom_out(t_window *win);
 void			del_segment(t_window *window, int color);
 void			error(void);
 void			usage(void);
+void			free_ressources(t_window *win);
+void			free_tab(t_3d_p_tab *tab);
 
 #endif

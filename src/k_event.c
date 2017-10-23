@@ -23,7 +23,7 @@
 int	fun_list(int keycode, void *window)
 {
 	if (keycode == 53)
-		close_program();
+		close_program(window);
 	if (keycode == 0)
 		draw_all_points(window);
 	if (keycode == 1)
@@ -49,9 +49,10 @@ int	fun_list(int keycode, void *window)
 	return (0);
 }
 
-int	close_program(void)
+int	close_program(t_window *win)
 {
-	ft_putendl("ESC pressed, closing program");
+	free_ressources(win);
+	ft_putendl("ESC pressed, closing program\n");
 	exit(0);
 	return (0);
 }

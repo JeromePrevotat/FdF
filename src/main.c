@@ -18,6 +18,7 @@ int	main(int argc, char **argv)
 	t_window 	*win1;
 	t_3d_p_list	**point_list;
 	t_3d_p_tab	*p_tab;
+	t_3d_p_tab	*base_tab;
 
 	if (argc == 2)
 	{
@@ -40,13 +41,15 @@ int	main(int argc, char **argv)
 		p_tab->x_max = get_tab_x(point_list);
 		p_tab->y_max = get_tab_y(point_list);
 		fill_tab(point_list, p_tab);
-		free(point_list);
 		mlx = mlx_init();
 		win1 = init_window(mlx, argv[1], 800, p_tab);
 		adapt_coord(p_tab, win1);
 		cart_to_iso(p_tab);
 		center_points(p_tab, win1);
+		base_tab = ptab_cpy(point_list, win1);
+		free(point_list);
 		win1->p_w = mlx_new_window(mlx, win1->width, win1->height, win1->title);
+		win1->base_tab = base_tab;
 		mlx_key_hook(win1->p_w, fun_list, win1);
 		draw_all_segment(win1, 0x00FFFFFF);
 		mlx_loop(mlx);

@@ -24,7 +24,7 @@ void move_up(t_window *win)
 		x = 0;
 		while (x < win->p_tab->x_max)
 		{
-			win->p_tab->tab[y][x].y = (int)win->p_tab->tab[y][x].y - 5;
+			win->p_tab->tab[y][x].y = (int)win->p_tab->tab[y][x].y - 25;
 			x++;
 		}
 		y++;
@@ -44,7 +44,7 @@ void move_down(t_window *win)
 		x = 0;
 		while (x < win->p_tab->x_max)
 		{
-			win->p_tab->tab[y][x].y = (int)win->p_tab->tab[y][x].y + 5;
+			win->p_tab->tab[y][x].y = (int)win->p_tab->tab[y][x].y + 25;
 			x++;
 		}
 		y++;
@@ -64,7 +64,7 @@ void move_rigth(t_window *win)
 		x = 0;
 		while (x < win->p_tab->x_max)
 		{
-			win->p_tab->tab[y][x].x = (int)win->p_tab->tab[y][x].x + 5;
+			win->p_tab->tab[y][x].x = (int)win->p_tab->tab[y][x].x + 25;
 			x++;
 		}
 		y++;
@@ -84,7 +84,7 @@ void move_left(t_window *win)
 		x = 0;
 		while (x < win->p_tab->x_max)
 		{
-			win->p_tab->tab[y][x].x = (int)win->p_tab->tab[y][x].x - 5;
+			win->p_tab->tab[y][x].x = (int)win->p_tab->tab[y][x].x - 25;
 			x++;
 		}
 		y++;

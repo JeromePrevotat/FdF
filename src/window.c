@@ -26,6 +26,7 @@ t_window	*init_window(void *mlx_p, char *title, int width, t_3d_p_tab *p_tab)
 	win->p_tab = p_tab;
 	win->p_w = NULL;
 	win->zoom = 100;
+	win->zoom_rate = 20;
 	return (win);
 }
 
