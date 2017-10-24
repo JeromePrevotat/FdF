@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   center_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jprevota <jprevota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,82 +12,90 @@
 
 #include "../inc/fdf.h"
 
-void	move_up(t_window *win)
+int	get_x_min(t_3d_p_tab *p_tab)
 {
+	int	min;
 	int	x;
 	int	y;
 
-	del_segment(win, 0x00000000);
+	min = p_tab->tab[0][0].x;
 	y = 0;
-	while (y < win->p_tab->y_max)
+	while (y < p_tab->y_max)
 	{
 		x = 0;
-		while (x < win->p_tab->x_max)
+		while (x < p_tab->x_max)
 		{
-			win->p_tab->tab[y][x].y = (int)win->p_tab->tab[y][x].y - 25;
+			if (p_tab->tab[y][x].x < min)
+				min = p_tab->tab[y][x].x;
 			x++;
 		}
 		y++;
 	}
-	draw_all_segment(win, 0x00FFFFFF);
+	return (min);
 }
 
-void	move_down(t_window *win)
+int	get_x_max(t_3d_p_tab *p_tab)
 {
+	int	max;
 	int	x;
 	int	y;
 
-	del_segment(win, 0x00000000);
+	max = p_tab->tab[0][0].x;
 	y = 0;
-	while (y < win->p_tab->y_max)
+	while (y < p_tab->y_max)
 	{
 		x = 0;
-		while (x < win->p_tab->x_max)
+		while (x < p_tab->x_max)
 		{
-			win->p_tab->tab[y][x].y = (int)win->p_tab->tab[y][x].y + 25;
+			if (p_tab->tab[y][x].x > max)
+				max = p_tab->tab[y][x].x;
 			x++;
 		}
 		y++;
 	}
-	draw_all_segment(win, 0x00FFFFFF);
+	return (max);
 }
 
-void	move_rigth(t_window *win)
+int	get_y_min(t_3d_p_tab *p_tab)
 {
+	int	min;
 	int	x;
 	int	y;
 
-	del_segment(win, 0x00000000);
+	min = p_tab->tab[0][0].y;
 	y = 0;
-	while (y < win->p_tab->y_max)
+	while (y < p_tab->y_max)
 	{
 		x = 0;
-		while (x < win->p_tab->x_max)
+		while (x < p_tab->x_max)
 		{
-			win->p_tab->tab[y][x].x = (int)win->p_tab->tab[y][x].x + 25;
+			if (p_tab->tab[y][x].y < min)
+				min = p_tab->tab[y][x].y;
 			x++;
 		}
 		y++;
 	}
-	draw_all_segment(win, 0x00FFFFFF);
+	return (min);
 }
 
-void	move_left(t_window *win)
+int	get_y_max(t_3d_p_tab *p_tab)
 {
+	int	max;
 	int	x;
 	int	y;
 
-	del_segment(win, 0x00000000);
+	max = p_tab->tab[0][0].y;
 	y = 0;
-	while (y < win->p_tab->y_max)
+	while (y < p_tab->y_max)
 	{
 		x = 0;
-		while (x < win->p_tab->x_max)
+		while (x < p_tab->x_max)
 		{
-			win->p_tab->tab[y][x].x = (int)win->p_tab->tab[y][x].x - 25;
+			if (p_tab->tab[y][x].y > max)
+				max = p_tab->tab[y][x].y;
 			x++;
 		}
 		y++;
 	}
-	draw_all_segment(win, 0x00FFFFFF);
+	return (max);
 }

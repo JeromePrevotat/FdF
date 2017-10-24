@@ -1,45 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.c                                             :+:      :+:    :+:   */
+/*   free_ressources.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jprevota <jprevota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 16:29:43 by jprevota          #+#    #+#             */
-/*   Updated: 2016/11/15 16:18:37 by jprevota         ###   ########.fr       */
+/*   Updated: 2017/05/20 21:48:16 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
-int		draw_all_points(t_window *window)
+void	free_ressources(t_window *win)
 {
-	int	x;
+	if (win != NULL && win->base_tab != NULL)
+		free_tab(win->base_tab);
+	if (win != NULL && win->p_tab != NULL)
+		free_tab(win->p_tab);
+	if (win != NULL)
+		free(win);
+}
+
+void	free_tab(t_3d_p_tab *tab)
+{
 	int	y;
 
 	y = 0;
-	while (y < window->p_tab->y_max)
+	if (tab != NULL)
 	{
-		x = 0;
-		while (x < window->p_tab->x_max)
+		while (y != tab->y_max)
 		{
-			mlx_pixel_put(window->mlx_p, window->p_w,
-				window->p_tab->tab[y][x].x, window->p_tab->tab[y][x].y,
-				window->p_tab->tab[y][x].color);
-			x++;
+			if (tab->tab[y] != NULL)
+				free(tab->tab[y]);
+			y++;
 		}
-		y++;
+		free(tab);
 	}
-	return (1);
-}
-
-void	draw_all_segment(t_window *win, int color)
-{
-	draw_seg_x(win, color);
-	draw_seg_y(win, color);
-}
-
-void	del_segment(t_window *win, int color)
-{
-	draw_all_segment(win, color);
 }

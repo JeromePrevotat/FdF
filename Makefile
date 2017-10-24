@@ -10,6 +10,9 @@ SRCS += ./src/parsing.c
 SRCS += ./src/window.c
 SRCS += ./src/draw.c
 SRCS += ./src/k_event.c
+SRCS += ./src/rescale.c
+SRCS += ./src/center.c
+SRCS += ./src/center_utils.c
 SRCS += ./src/point.c
 SRCS += ./src/segment.c
 SRCS += ./src/list.c
@@ -20,6 +23,7 @@ SRCS += ./src/rotation.c
 SRCS += ./src/projection.c
 SRCS += ./src/move.c
 SRCS += ./src/utils.c
+SRCS += ./src/free_ressources.c
 
 SRCS += ./src/zoom.c
 

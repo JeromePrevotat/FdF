@@ -44,7 +44,6 @@ void	adapt_coord(t_3d_p_tab *p_tab, t_window *win)
 				* (p_tab->tab[y][x].x));
 			p_tab->tab[y][x].y = (int)(((3 * win->height) / 100)
 				* (p_tab->tab[y][x].y));
-
 			p_tab->tab[y][x].z = (int)(((3 * win->width) / 100)
 				* (p_tab->tab[y][x].z));
 			x++;
