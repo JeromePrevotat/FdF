@@ -50,8 +50,8 @@ void	draw_seg_y(t_window *win, int color)
 	}
 }
 
-void		draw_segment(t_window *win, t_3d_point point_a, t_3d_point point_b,
-		int color)
+void	draw_segment(t_window *win, t_3d_point point_a, t_3d_point point_b,
+			int color)
 {
 	t_seg_arg	*seg_arg;
 
@@ -80,7 +80,7 @@ void		draw_segment(t_window *win, t_3d_point point_a, t_3d_point point_b,
 		free(seg_arg);
 }
 
-int			draw_h_segment(t_window *win, t_seg_arg *seg_arg, int color)
+int		draw_h_segment(t_window *win, t_seg_arg *seg_arg, int color)
 {
 	int i;
 	int e;
@@ -105,7 +105,7 @@ int			draw_h_segment(t_window *win, t_seg_arg *seg_arg, int color)
 	return (1);
 }
 
-int			draw_v_segment(t_window *win, t_seg_arg *seg_arg, int color)
+int		draw_v_segment(t_window *win, t_seg_arg *seg_arg, int color)
 {
 	int i;
 	int e;

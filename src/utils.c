@@ -15,11 +15,11 @@
 void	error(void)
 {
 	ft_putendl("Incorrect File");
-	exit(-1);
+	exit(0);
 }
 
 void	usage(void)
 {
 	ft_putendl("Usage: ./fdf PathToMyFile");
-	exit(-1);
+	exit(0);
 }
