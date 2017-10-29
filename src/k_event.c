@@ -18,6 +18,12 @@
 ** X : 7
 ** S : 1
 ** P : 0
+** UP_ARROW : 126
+** RIGTH_ARROW : 124
+** DOWN_ARROW : 125
+** LEFT_ARROW : 123
+** R : 15
+** F : 3
 */
 
 int	fun_list(int keycode, void *window)
@@ -52,7 +58,7 @@ int	fun_list(int keycode, void *window)
 int	close_program(t_window *win)
 {
 	free_ressources(win);
-	ft_putendl("ESC pressed, closing program\n");
+	ft_putendl("ESC pressed, closing program.");
 	exit(0);
 	return (0);
 }

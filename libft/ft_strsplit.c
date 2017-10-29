@@ -6,7 +6,7 @@
 /*   By: jprevota <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 20:08:54 by jprevota          #+#    #+#             */
-/*   Updated: 2016/11/22 13:46:34 by jprevota         ###   ########.fr       */
+/*   Updated: 2017/10/29 16:54:27 by jprevota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ char		**ft_strsplit(char const *s, char c)
 		i++;
 	}
 	tab[i] = NULL;
-	if (str != NULL)
-		free(str);
+	free(str);
 	return (tab);
 }

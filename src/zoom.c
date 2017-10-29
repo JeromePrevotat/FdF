@@ -6,7 +6,7 @@
 /*   By: jprevota <jprevota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 16:29:43 by jprevota          #+#    #+#             */
-/*   Updated: 2017/05/20 21:48:16 by admin            ###   ########.fr       */
+/*   Updated: 2017/10/29 17:04:08 by jprevota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void		zoom_in(t_window *win)
 
 	del_segment(win, 0x00000000);
 	win->zoom = win->zoom + win->zoom_rate;
-	printf("ZOOM : %d%%\n", win->zoom);
 	y = 0;
 	while (y < win->p_tab->y_max)
 	{
@@ -47,7 +46,6 @@ void		zoom_out(t_window *win)
 	if (win->zoom == 100)
 		return ;
 	win->zoom = win->zoom - win->zoom_rate;
-	printf("ZOOM : %d%%\n", win->zoom);
 	del_segment(win, 0x00000000);
 	y = 0;
 	while (y < win->p_tab->y_max)

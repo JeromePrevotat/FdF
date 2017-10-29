@@ -6,7 +6,7 @@
 /*   By: jprevota <jprevota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 16:29:43 by jprevota          #+#    #+#             */
-/*   Updated: 2016/11/15 16:18:37 by jprevota         ###   ########.fr       */
+/*   Updated: 2017/10/29 17:05:36 by jprevota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,5 @@ int	parsing_line(char *line, int y, t_3d_p_list **point_list)
 		new_3d_point(point_list, i, y, atoi(point_tab[i]));
 		i++;
 	}
-	ft_putnbr(y);
-	ft_putstr(" : ");
-	ft_putendl(line);
 	return (0);
 }
