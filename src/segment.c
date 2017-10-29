@@ -12,7 +12,7 @@
 
 #include "../inc/fdf.h"
 
-static void	draw_seg_x(t_window *win, int color)
+void	draw_seg_x(t_window *win, int color)
 {
 	int	x;
 	int	y;
@@ -31,7 +31,7 @@ static void	draw_seg_x(t_window *win, int color)
 	}
 }
 
-static void	draw_seg_y(t_window *win, int color)
+void	draw_seg_y(t_window *win, int color)
 {
 	int	x;
 	int	y;
