@@ -35,7 +35,7 @@ all: libft mlx $(NAME)
 $(NAME): $(OBJ) $(INC)
 	$(CC) $(CFLAGS) $(LIB) $(MLXFLAGS) $(SRCS) -o $@
 
-.PHONY: clean
+.PHONY: libft mlx clean fclean
 clean:
 	rm -rf $(OBJ)
 	cd ./libft && $(MAKE) clean
@@ -45,10 +45,8 @@ fclean: clean
 
 re:	fclean all
 
-.PHONY: libft
 libft:
 	cd ./libft && $(MAKE)
 
-.PHONY: mlx
 mlx:
 	cd ./minilibx && $(MAKE)
